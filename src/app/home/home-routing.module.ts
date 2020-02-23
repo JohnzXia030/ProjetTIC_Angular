@@ -14,11 +14,6 @@ const routes: Routes = [
         path:'connexion',
         component:HomeFormComponent,
         pathMatch:'full'
-      },
-      {
-        path:'connexion1',
-        component:HomeFormComponent,
-        pathMatch:'full'
       }
       
     ]

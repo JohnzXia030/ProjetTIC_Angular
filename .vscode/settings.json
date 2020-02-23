@@ -1,7 +1,5 @@
 {
     "githubPullRequests.remotes": [
-        "origin",
-        "upstream",
-        "\"githubPullRequests.queries\": [ \t{ \t\t\"label\": \"Waiting For My Review\", \t\t\"query\": \"is:open review-requested:${user}\" \t}, \t{ \t\t\"label\": \"Assigned To Me\", \t\t\"query\": \"is:open assignee:${user}\" \t}, \t{ \t\t\"label\": \"Created By Me\", \t\t\"query\": \"is:open author:${user}\" \t}, \t{ \t\t\"label\": \"Mentioned Me\", \t\t\"query\": \"is:open mentions:${user}\" \t} ]"
+        "origin"
     ]
 }
