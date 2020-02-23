@@ -1,0 +1,9 @@
+<div *ngIf="user">
+    <div *ngFor="let user of user">
+
+        <textarea>{{user.nom}}</textarea>
+        <textarea>{{user.pw}}</textarea>
+
+    </div>
+</div>
+<button type="button" (click)="getUsername()">Test sql</button>
