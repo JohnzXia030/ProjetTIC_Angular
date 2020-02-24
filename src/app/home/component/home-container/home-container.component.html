@@ -1,19 +1,109 @@
-<!--
-<button class="btn btn-primary">Test Button</button>
--->
 <header id="header" class="skel-layers-fixed">
     <h1>
         <a href="#"></a>
     </h1>
     <nav id="nav">
-        <ul>
+        <ul ngbNav #nav="ngbNav" class="nav-tabs">
             <li><a href="#">Acceuil</a></li>
-            <li><a href="home/connexion">Connecxion</a></li>
+            <li><a href="home/connexion">Connexion</a></li>
             <li><a href="#">Inscription</a></li>
-            <li><a href="#">Introduction</a></li>
+
 
         </ul>
     </nav>
 </header>
+<ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+    <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+            <img src="assets/img/home-bg.jpg" alt="Random slide" width="100%" height="1000px">
+        </div>
+        <div class="carousel-caption">
+            <h3 [ngStyle]="{'color': '#ffffff'}">Bienvenu sur E-sql learning</h3>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <ul class="actions">
+                <li><a href="home/connexion" class="button big special">Connexion</a></li>
+                <li><a href="Inscription" class="button big special">Inscription</a></li>
+            </ul>
 
+
+            <p></p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </ng-template>
+</ngb-carousel>
+
+
+
+<!--
+<nav id="topNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            <a class="navbar-brand page-scroll" href="#first"><i class="ion-ios-analytics-outline"></i> Landing Zero</a>
+        </div>
+        <div class="navbar-collapse collapse" id="bs-navbar">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="page-scroll" href="#">Intro</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#">Highlights</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#">Gallery</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#">Features</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#">Contact</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" data-toggle="modal" title="A free Bootstrap video landing theme" href="#aboutModal">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header id="first">
+    <div class="header-content">
+        <div class="inner">
+            <h1 class="cursive">Simple, One Page Design</h1>
+            <h4>A free landing page theme with video background</h4>
+            <hr>
+            <a href="#video-background" id="toggleVideo" data-toggle="collapse" class="btn btn-primary btn-xl">Toggle Video</a> &nbsp; <a href="#one" class="btn btn-primary btn-xl page-scroll">Get Started</a>
+        </div>
+    </div>
+    <video autoplay="" loop="" class="fillWidth fadeIn wow collapse in" data-wow-delay="0.5s" poster="https://s3-us-west-2.amazonaws.com/coverr/poster/Traffic-blurred2.jpg" id="video-background">
+            <source src="https://s3-us-west-2.amazonaws.com/coverr/mp4/Traffic-blurred2.mp4" type="video/mp4">Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+    <img src="assets/img/home-bg.jpg" alt="Random slide" height="100%" width="100%">
+
+</header>
+<link rel="stylesheet" href="/src/assets/css/animate.min.css" />
+<link rel="stylesheet" href="/src/assets/css/animate.min.css" />
+<link rel="stylesheet" href="/src/assets/css/ionicons.min.css" />
+<link rel="stylesheet" href="/src/assets/css/styles.css" />
+<script src="/src/assets/js/jquery.min.js"></script>
+<script src="/src/assets/js/bootstrap.min.js"></script>
+<script src="/src/assets/js/jquery.easing.min.js"></script>
+<script src="/src/assets/js/wow.js"></script>
+<script src="/src/assets/js/scripts.js"></script>-->
 <router-outlet></router-outlet>

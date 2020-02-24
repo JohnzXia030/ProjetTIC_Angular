@@ -1,3 +1,39 @@
+<header id="header" class="skel-layers-fixed">
+    <h1>
+        <a href="#"></a>
+    </h1>
+    <nav id="nav">
+        <ul ngbNav #nav="ngbNav" class="nav-tabs">
+            <li><a href="#">Acceuil</a></li>
+            <li><a href="home/connexion">Connexion</a></li>
+            <li><a href="#">Inscription</a></li>
+
+
+        </ul>
+    </nav>
+</header>
+
+<section id="main" class="wrapper style1">
+    <header class="major">
+        <h2>Connexion</h2>
+
+    </header>
+</section>
+
+<div class="form_connect_inscri" id="connexion_form">
+    <form id="Connections" action="Connection" method="POST">
+        <p>Email:<span style="color:red"> *</span></p>
+        <input name="email" type="text" placeholder="sample@mail.com" required="required" size="20">
+        <br>
+        <p>Password:<span style="color:red"> *</span></p>
+        <input name="password" type="password" required="required" size="15">
+        <br/>
+        <input type="submit" value="Submit">
+    </form>
+
+</div>
+
+
 <div *ngIf="user">
     <div>
         <textarea>{{user.nom}}</textarea>
