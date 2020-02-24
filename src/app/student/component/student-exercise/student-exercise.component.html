@@ -1,3 +1,4 @@
+<body>
 <div *ngIf="exerciseDB">
   <h1>Exercice {{exerciseDB.idExercise}} </h1>
   <mat-card>{{exerciseDB.exerciseText}}</mat-card>
@@ -7,18 +8,21 @@
   <form (ngSubmit)="onSubmit()">
     <mat-form-field class="example-full-width">
       <mat-label>Votre requête</mat-label>
-      <input matInput placeholder="select ..." value="" type="text"  [(ngModel)]="model.sqlQuery" name="sqlQuery" id="sqlQuery">
-      <button mat-button *ngIf="this.model.sqlQuery" matSuffix mat-icon-button aria-label="Clear" (click)="this.model.sqlQuery='';correct=null;this.dataResults=null">
+      <input [(ngModel)]="model.sqlQuery" id="sqlQuery" matInput name="sqlQuery" placeholder="select ..." type="text"
+             value="">
+      <button (click)="this.model.sqlQuery='';correct=null;this.dataResults=null" *ngIf="this.model.sqlQuery"
+              aria-label="Clear" mat-button mat-icon-button
+              matSuffix>
         <mat-icon>close</mat-icon>
       </button>
 
     </mat-form-field>
-    <button mat-button type="submit" class="btn btn-success">Submit</button>
+    <button class="btn btn-success" mat-button type="submit">Submit</button>
 
   </form>
   <div class="check-icon-div">
     <div *ngIf="correct==true">
-      <mat-icon  class="check-icon" id="true">check</mat-icon>
+      <mat-icon class="check-icon" id="true">check</mat-icon>
       <p class="check-message-true">Bravo!</p>
     </div>
     <div *ngIf="correct==false">
@@ -31,18 +35,21 @@
 
 
 <div *ngIf="this.dataResults!=null&&!this.hasSqlSyntaxError()" align="center">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-      <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+      <th *matHeaderCellDef mat-header-cell> {{column}} </th>
+      <td *matCellDef="let element" mat-cell> {{element[column]}} </td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
   </table>
 </div>
 
 <div class="example-form">
-  <button class="btn btn-success" (click)="nextExercise()">Exercice suivant</button>
-  <button class="btn btn-success" *ngIf="this.idExerciseToShow!=1"   (click)="lastExercise()">Exercice précédent</button>
+  <button (click)="lastExercise()" *ngIf="this.idExerciseToShow!=1" class="btn btn-success">Exercice précédent</button>
+  <button (click)="nextExercise()" class="btn btn-success">Exercice suivant</button>
 </div>
+</body>
+
+
 

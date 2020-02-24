@@ -9,6 +9,9 @@ import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [StudentAccountComponent,StudentExerciseComponent],
@@ -21,7 +24,10 @@ import {MatInputModule} from '@angular/material/input';
     MatTableModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatCheckboxModule
   ]
 })
 export class StudentModule { }

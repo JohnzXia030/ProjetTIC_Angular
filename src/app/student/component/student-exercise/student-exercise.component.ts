@@ -98,20 +98,25 @@ export class StudentExerciseComponent implements OnInit {
     this.ngOnInit();
   }
 
-  lastExercise(){
+  lastExercise() {
     this.idExerciseToShow--;
     this.ngOnInit();
   }
 
-  getErrorCode(){
-    if(this.hasSqlSyntaxError()){
+  getErrorCode() {
+    if (this.hasSqlSyntaxError()) {
       return this.dataResults.ErrorCode;
     }
   }
 
-  getRootCause(){
-    if(this.hasSqlSyntaxError()){
+  getRootCause() {
+    if (this.hasSqlSyntaxError()) {
       return this.dataResults.RootCause;
     }
   }
+
+  events: string[] = [];
+  opened: boolean;
+
+  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 }
