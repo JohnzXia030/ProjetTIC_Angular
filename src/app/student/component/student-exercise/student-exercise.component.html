@@ -1,3 +1,46 @@
-<p>
-  student-exercise works!
-</p>
+<div *ngIf="exerciseDB">
+  <h1>Exercice {{exerciseDB.idExercise}} </h1>
+  <mat-card>{{exerciseDB.exerciseText}}</mat-card>
+</div>
+
+<div class="example-form">
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Votre requête</mat-label>
+      <input matInput placeholder="select ..." value="" type="text"  [(ngModel)]="model.sqlQuery" name="sqlQuery" id="sqlQuery">
+      <button mat-button *ngIf="this.model.sqlQuery" matSuffix mat-icon-button aria-label="Clear" (click)="this.model.sqlQuery='';correct=null;this.dataResults=null">
+        <mat-icon>close</mat-icon>
+      </button>
+
+    </mat-form-field>
+    <button mat-button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+  <div class="check-icon-div">
+    <div *ngIf="correct==true">
+      <mat-icon  class="check-icon" id="true">check</mat-icon>
+      <p class="check-message-true">Bravo!</p>
+    </div>
+    <div *ngIf="correct==false">
+      <mat-icon class="check-icon" id="false">close</mat-icon>
+      <p class="check-message-false">{{this.getErrorCode()}}  {{this.getRootCause()}}</p>
+    </div>
+
+  </div>
+</div>
+
+
+<div *ngIf="this.dataResults!=null&&!this.hasSqlSyntaxError()" align="center">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+
+<button class="btn btn-success" (click)="nextExercise()">Exercice suivant</button>
+

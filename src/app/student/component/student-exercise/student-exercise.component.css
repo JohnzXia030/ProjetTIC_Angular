@@ -1,0 +1,49 @@
+h1{
+  text-align: center;
+  margin: 2% 0 2% 0;
+}
+
+mat-card{
+  margin: 0 20% 0 20%;
+}
+
+table {
+  width: 60%;
+  overflow: auto
+}
+
+.example-form {
+  margin: 2% 20% 0 20%;
+  width: 60%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.center{
+  text-align: center;
+}
+
+.check-icon-div{
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.check-icon{
+  font-size: 20px;
+}
+
+#true{
+  color:green;
+}
+
+#false{
+  color:red;
+}
+
+.check-message-false{
+  color:red;
+  font-size: 20px;
+}
