@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http'
   styleUrls: ['./home-form.component.css']
 })
 export class HomeFormComponent implements OnInit {
-  readonly APP_URL = 'http://localhost:8080';
 
   @Output() user:any;
   constructor(private _http: HttpClient) { 
