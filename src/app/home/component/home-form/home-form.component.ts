@@ -18,7 +18,7 @@ export class HomeFormComponent implements OnInit {
 
   getUsername(){
     console.log("first request from crossorigin");
-    this._http.get(this.APP_URL + '/getUser').subscribe(
+    this._http.get('api/home/getUser').subscribe(
       data => {
         this.user = data;
       },
