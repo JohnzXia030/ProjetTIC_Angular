@@ -98,6 +98,11 @@ export class StudentExerciseComponent implements OnInit {
     this.ngOnInit();
   }
 
+  lastExercise(){
+    this.idExerciseToShow--;
+    this.ngOnInit();
+  }
+
   getErrorCode(){
     if(this.hasSqlSyntaxError()){
       return this.dataResults.ErrorCode;

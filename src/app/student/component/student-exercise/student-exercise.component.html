@@ -41,6 +41,8 @@
   </table>
 </div>
 
-
-<button class="btn btn-success" (click)="nextExercise()">Exercice suivant</button>
+<div class="example-form">
+  <button class="btn btn-success" (click)="nextExercise()">Exercice suivant</button>
+  <button class="btn btn-success" *ngIf="this.idExerciseToShow!=1"   (click)="lastExercise()">Exercice précédent</button>
+</div>
 
