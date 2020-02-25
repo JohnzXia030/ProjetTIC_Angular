@@ -19,20 +19,24 @@
     </header>
 </section>
 
+<div class="form_connect_inscri">
 
-<form (ngSubmit)="onSubmit()" #connectionForm="ngForm">
-    <p>Email:<span style="color:red"> *</span></p>
-    <input class="form-control" type="text" id="username" placeholder="sample@mail.com/emmanuel.macron" required="required" size="20" [(ngModel)]="model.username" name="username" #username="ngModel">
-    <br>
-    <p>Password:<span style="color:red"> *</span></p>
-    <input [(ngModel)]="model.password" class="form-control" id="password" name="password" type="password" required="required" size="15">
-    <br/>
-    <input type="radio" [(ngModel)]="model.groupid" value="1">Login as Administrator<br>
-    <input type="radio" [(ngModel)]="model.groupid" value="2" checked>Login as User<br><br>
-    <input type="submit" value="Submit" [disabled]="!connexionForm.form.valid">
-</form>
-<p>{{connexionForm.value|json}}</p>
+    <form (ngSubmit)="onSubmit(connectionForm.value)" #connectionForm="ngForm">
+        <p>Email:<span style="color:red"> *</span></p>
+        <input class="form-control" type="text" id="username" required="required" size="20" [(ngModel)]="model.username" name="username" placeholder="sample@mail.com/emmanuel.macron">
+        <br>
+        <p>Password:<span style="color:red"> *</span></p>
+        <input [(ngModel)]="model.password" class="form-control" id="password" name="password" type="password" required="required" size="15">
+        <br/>
 
+        <select class="form-control" id="power" required [(ngModel)]="model.groupid" name="groupid">
+            <option [value]="1">Login as Administrator</option>
+            <option [value]="2">Login as User</option>
+        </select><br/>
+        <input type="submit" value="Submit" [disabled]="!connectionForm.form.valid">
+    </form>
+    <p>{{connectionForm.value|json}}</p>
+</div>
 
 
 <!-- <div *ngIf="user">

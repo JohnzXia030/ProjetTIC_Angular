@@ -7,7 +7,8 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeModule } from './home/home.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
    declarations: [
@@ -22,7 +23,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
       HttpClientModule,
       BrowserAnimationsModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
    ],
    providers: [],
    bootstrap: [
