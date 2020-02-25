@@ -5,13 +5,11 @@ import { FormArray,ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router';
 
 export class userConnection {
-
   constructor(
     public username: string,
     public password: string,
     public groupid : number
   ) {  }
-
 }
 @Component({
   selector: 'app-home-form',
@@ -19,28 +17,26 @@ export class userConnection {
   styleUrls: ['./home-form.component.css']
 })
 export class HomeFormComponent implements OnInit {
+  public model ;
+  public responseUser;
+  @Output() user:any;
   public connexionForm = {
     username:'',
     password:'',
     groupid:''
   }
-  public model ;
-  public resp: string = "";
-  public responseUser;
-  @Output() user:any;
-  constructor(private _http: HttpClient,private router: Router) { 
-    
-  }
+  
+  constructor(private _http: HttpClient,private router: Router) {}
 
   ngOnInit() {
     this.model = new userConnection("","",1);
   }
+  
   onSubmit(data){
     //data and model represents both the information submitted
     this._http
     .post("api/user/getLogInfo", 
-          JSON.stringify(data),{responseType: 'text'}
-          )
+          JSON.stringify(data),{responseType: 'text'})
     .subscribe(
           results => {
             this.responseUser= JSON.parse(results);
@@ -51,22 +47,11 @@ export class HomeFormComponent implements OnInit {
             else if(this.responseUser.StatusCode==200){
               console.log("log in");
               this.router.navigateByUrl("student/account")
-            }}
-          );
-  }
-  
-  getCode(){
-    console.log("user trying to login");
-    this._http.get('api/user/getLogInfo').subscribe(
-      data => {
-        this.user = data;
-      },
-      error => {
-        console.log('Error occured', error);
-      }
+            }
+          }
     );
-    console.log(this.user);
   }
+
 
   /* getUsername(){
     console.log("first request from crossorigin");
