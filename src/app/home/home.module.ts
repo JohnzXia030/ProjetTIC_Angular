@@ -6,6 +6,7 @@ import { HomeContainerComponent } from './component/home-container/home-containe
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeFormComponent } from './component/home-form/home-form.component';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,8 +14,9 @@ import { HttpClient } from '@angular/common/http';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    NgbModule
-    
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers:[HttpClient]
 })

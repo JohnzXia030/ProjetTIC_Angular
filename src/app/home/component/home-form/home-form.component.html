@@ -16,28 +16,33 @@
 <section id="main" class="wrapper style1">
     <header class="major">
         <h2>Connexion</h2>
-
     </header>
 </section>
 
-<div class="form_connect_inscri" id="connexion_form">
-    <form id="Connections" action="Connection" method="POST">
+<div class="form_connect_inscri">
+
+    <form (ngSubmit)="onSubmit(connectionForm.value)" #connectionForm="ngForm">
         <p>Email:<span style="color:red"> *</span></p>
-        <input name="email" type="text" placeholder="sample@mail.com" required="required" size="20">
+        <input class="form-control" type="text" id="username" required="required" size="20" [(ngModel)]="model.username" name="username" placeholder="sample@mail.com/emmanuel.macron">
         <br>
         <p>Password:<span style="color:red"> *</span></p>
-        <input name="password" type="password" required="required" size="15">
+        <input [(ngModel)]="model.password" class="form-control" id="password" name="password" type="password" required="required" size="15">
         <br/>
-        <input type="submit" value="Submit">
-    </form>
 
+        <select class="form-control" id="power" required [(ngModel)]="model.groupid" name="groupid">
+            <option [value]="1">Login as Administrator</option>
+            <option [value]="2">Login as User</option>
+        </select><br/>
+        <input type="submit" value="Submit" [disabled]="!connectionForm.form.valid">
+    </form>
+    <!-- <p>{{connectionForm.value|json}}</p> -->
 </div>
 
 
-<div *ngIf="user">
+<!-- <div *ngIf="user">
     <div>
         <textarea>{{user.nom}}</textarea>
         <textarea>{{user.pw}}</textarea>
     </div>
 </div>
-<button type="button" (click)="getUsername()">Test sql</button>
+<button type="button" (click)="getUsername()">Test sql</button> -->
