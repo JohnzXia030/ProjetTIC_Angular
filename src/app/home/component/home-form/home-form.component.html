@@ -6,7 +6,7 @@
         <ul ngbNav #nav="ngbNav" class="nav-tabs">
             <li><a href="#">Acceuil</a></li>
             <li><a href="home/connexion">Connexion</a></li>
-            <li><a href="#">Inscription</a></li>
+            <li><a href="home/inscription">Inscription</a></li>
 
 
         </ul>
@@ -22,8 +22,8 @@
 <div class="form_connect_inscri">
 
     <form (ngSubmit)="onSubmit(connectionForm.value)" #connectionForm="ngForm">
-        <p>Email:<span style="color:red"> *</span></p>
-        <input class="form-control" type="text" id="username" required="required" size="20" [(ngModel)]="model.username" name="username" placeholder="sample@mail.com/emmanuel.macron">
+        <p>Email/Username:<span style="color:red"> *</span></p>
+        <input class="form-control" type="text" id="username" required="required" size="20" [(ngModel)]="model.email" [(ngModel)]="model.username" name="username" placeholder="sample@mail.com/emmanuel.macron">
         <br>
         <p>Password:<span style="color:red"> *</span></p>
         <input [(ngModel)]="model.password" class="form-control" id="password" name="password" type="password" required="required" size="15">
@@ -34,6 +34,8 @@
             <option [value]="2">Login as User</option>
         </select><br/>
         <input type="submit" value="Submit" [disabled]="!connectionForm.form.valid">
+
+        <p *ngIf="error" class=error><strong>{{error}}</strong></p>
     </form>
     <!-- <p>{{connectionForm.value|json}}</p> -->
 </div>

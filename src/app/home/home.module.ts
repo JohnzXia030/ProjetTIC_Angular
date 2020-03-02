@@ -7,10 +7,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeFormComponent } from './component/home-form/home-form.component';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeInscriptionComponent } from './component';
 
 
 @NgModule({
-  declarations: [HomeContainerComponent,HomeFormComponent],
+  declarations: [HomeContainerComponent,HomeFormComponent,HomeInscriptionComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

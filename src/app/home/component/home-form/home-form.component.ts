@@ -4,9 +4,10 @@ import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { FormArray,ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router';
 
-export class userConnection {
+export class userInfo {
   constructor(
     public username: string,
+    public email:   string,
     public password: string,
     public groupid : number
   ) {  }
@@ -20,6 +21,7 @@ export class HomeFormComponent implements OnInit {
   public model ;
   public responseUser;
   @Output() user:any;
+  public error;
   public connexionForm = {
     username:'',
     password:'',
@@ -29,24 +31,25 @@ export class HomeFormComponent implements OnInit {
   constructor(private _http: HttpClient,private router: Router) {}
 
   ngOnInit() {
-    this.model = new userConnection("","",1);
+    this.model = new userInfo("","","",2);
   }
   
   onSubmit(data){
     //data and model represents both the information submitted
     this._http
     .post("api/user/getLogInfo", 
-          JSON.stringify(data),{responseType: 'text'})
+          JSON.stringify(this.model),{responseType: 'text'})
     .subscribe(
           results => {
             this.responseUser= JSON.parse(results);
             if (this.responseUser.StatusCode==401){
               alert(this.responseUser.StatusMessage);
-              this.router.navigateByUrl("home/connexion")
+              this.error = this.responseUser.StatusMessage;
+              this.router.navigateByUrl("home/connexion");
             } 
             else if(this.responseUser.StatusCode==200){
               console.log("log in");
-              this.router.navigateByUrl("student/account")
+              this.router.navigateByUrl("student/account");
             }
           }
     );

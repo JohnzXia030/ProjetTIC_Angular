@@ -1,0 +1,43 @@
+<header id="header" class="skel-layers-fixed">
+    <h1>
+        <a href="#"></a>
+    </h1>
+    <nav id="nav">
+        <ul ngbNav #nav="ngbNav" class="nav-tabs">
+            <li><a href="#">Acceuil</a></li>
+            <li><a href="home/connexion">Connexion</a></li>
+            <li><a href="home/inscription">Inscription</a></li>
+
+
+        </ul>
+    </nav>
+</header>
+
+<section id="main" class="wrapper style1">
+    <header class="major">
+        <h2>Inscription</h2>
+    </header>
+</section>
+
+<div class="form_connect_inscri">
+
+    <form (ngSubmit)="onSubmit(inscriptionForm.value)" #inscriptionForm="ngForm">
+        <p>Email:<span style="color:red"> *</span></p>
+        <input class="form-control" type="text" id="email1" required="required" size="20" [(ngModel)]="model.email" name="email" placeholder="sample@mail.com">
+        <br>
+        <p>Username:<span style="color:red"> *</span></p>
+        <input class="form-control" type="text" id="username1" required="required" size="20" [(ngModel)]="model.username" name="username" placeholder="emmanuel.macron">
+        <br>
+        <p>Password:<span style="color:red"> *</span></p>
+        <input name="password" [(ngModel)]="model.password" class="form-control" id="password1" type="password" required="required" size="15">
+        <br/>
+        <p>Confirmation password:<span style="color:red"> *</span></p>
+        <input name="password2" [(ngModel)]="pw2" class="form-control" id="password2" type="password" required="required" size="15">
+        <br/>
+
+        <input type="submit" value="Confirmer l'information" [disabled]="!inscriptionForm.form.valid">
+
+        <p *ngIf="error" class=error><strong>{{error}}</strong></p>
+    </form>
+    <!-- <p>{{inscriptionForm.value|json}}</p> -->
+</div>
