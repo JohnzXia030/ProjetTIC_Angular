@@ -1,3 +1,8 @@
-<p>
-  admin-exo works!
-</p>
+<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+	<mat-tab *ngFor="let category of categories; let index = index" role="list" [label]="category.name">
+	  	<mat-list role="list">
+		  <mat-list-item role="listitem" *ngFor="let exo of exercises">{{exo.idExercise}}{{exo.exerciseText}}</mat-list-item>
+		</mat-list>
+	</mat-tab>
+</mat-tab-group>
+{{integ}}
