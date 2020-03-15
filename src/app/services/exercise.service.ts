@@ -14,6 +14,11 @@ export class ExerciseService {
   	return this.http.post("api/exercise/addExercise", JSON.stringify(exercise),{responseType: 'text'})
   }
 
+  deleteExercise(exercise: Exercise){
+  	let id = exercise.idExercise;
+  	return this.http.delete(`api/exercise/deleteExercise/${id}`)
+  }
+
   getAllExercises(){
   	return this.http.get<Exercise[]>("api/exercise/getAllExercises")
   }

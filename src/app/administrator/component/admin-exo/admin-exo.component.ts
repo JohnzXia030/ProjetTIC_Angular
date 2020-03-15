@@ -7,6 +7,7 @@ import { CategoryService } from '../../../services/category.service'
 import { ExerciseService } from '../../../services/exercise.service'
 import {FormControl} from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: 'app-admin-exo',
@@ -19,6 +20,7 @@ export class AdminExoComponent implements OnInit {
 	exercises: Exercise[];
 	categories: Category[];
 	tabSelected: number=0;
+	model: string;
 	
 
 	constructor(public http:HttpClient, 
@@ -26,10 +28,6 @@ export class AdminExoComponent implements OnInit {
 		public exerciseService: ExerciseService ) { }
 
 	ngOnInit() {
-	this.exo.exerciseCorrection = "exo Correction"
-		this.exo.exerciseText = "exo Text"
-		this.exo.groupId = 1
-		this.exo.idExercise = 10 
 		this.getExercisesByGroup();
 		this.getAllCategories();
   	}
@@ -37,12 +35,16 @@ export class AdminExoComponent implements OnInit {
 
   	createExercise(){
   		console.log(JSON.stringify(this.exo))
+  		this.exerciseService.createExercise(this.exo).subscribe(result =>
+  			this.getExercisesByGroup()
+  		);
 
-  		this.exerciseService.createExercise(this.exo).subscribe(results =>
-		    {	
-		    	console.log("reach");
-		  	}
-		)
+	}
+
+	deleteExercise(exercise: Exercise){
+		this.exerciseService.deleteExercise(exercise).subscribe(result =>
+			this.getExercisesByGroup()
+		);
 	}
 
 	getExercises(){
@@ -72,8 +74,16 @@ export class AdminExoComponent implements OnInit {
 
 	tabChanged(tabChangeEvent: MatTabChangeEvent): void {
 	  this.tabSelected=tabChangeEvent.index;
-	  this.getExercisesByGroup();
+	  this.getExercisesByGroup()
 	}
 
+	onSubmit(){
+		this.createExercise();
+	}
 
+	testLog(){
+		let id = 13;
+		let str:string = `coucou/${id}`
+		console.log(str)
+	}
 }

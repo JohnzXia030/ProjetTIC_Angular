@@ -1,8 +1,38 @@
 <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
 	<mat-tab *ngFor="let category of categories; let index = index" role="list" [label]="category.name">
 	  	<mat-list role="list">
-		  <mat-list-item role="listitem" *ngFor="let exo of exercises">{{exo.idExercise}}{{exo.exerciseText}}</mat-list-item>
+		  	<mat-list-item role="listitem" *ngFor="let exo of exercises">
+		  		Id : {{exo.idExercise}} Enoncé : {{exo.exerciseText}}
+		  		<button (click)="deleteExercise(exo)">x</button>
+			</mat-list-item>
 		</mat-list>
 	</mat-tab>
 </mat-tab-group>
-{{integ}}
+
+<div>
+  <form (ngSubmit)="onSubmit()" class="example-form">
+    <mat-form-field>
+      <mat-label>Enoncé de l'exercice</mat-label>
+      <textarea matInput type="text"  [(ngModel)]="exo.exerciseText" name="énoncé"> </textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Correction de l'exercice</mat-label>
+      <textarea matInput type="text"  [(ngModel)]="exo.exerciseCorrection" name="correction"> </textarea>
+    </mat-form-field>
+	<mat-form-field>
+	  <mat-label>Category</mat-label>
+	  <mat-select [(value)]="exo.groupId">
+	    <mat-option *ngFor="let category of categories" [value]="category.id">
+	      {{category.name}}
+	    </mat-option>
+	  </mat-select>
+	</mat-form-field>
+    <button  type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<button (click)="getExercisesByGroup()">Actualize</button>
+<button (click)="testLog()">sqdf</button>
+{{exo.groupId}}
+
+

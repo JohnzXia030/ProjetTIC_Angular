@@ -1,14 +1,10 @@
 h1{
-	text-align: center;
-	margin: 2% 0 2% 0;
+  text-align: center;
+  margin: 2% 0 2% 0;
 }
 
 mat-card{
-	margin: 0 20% 0 20%;
-}
-
-form  {
-	
+  margin: 0 20% 0 20%;
 }
 
 table {
@@ -26,15 +22,43 @@ table {
 }
 
 .center{
-	text-align: center;
+  text-align: center;
 }
 
-.success{
-	font-size: 5em;
-	color : green;
+.check-icon-div{
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.fail{
-	font-size: 5em;
-	color: red;
+.check-icon{
+  font-size: 20px;
+}
+
+#true{
+  color:green;
+}
+
+#false{
+  color:red;
+}
+
+.check-message-false{
+  color:red;
+  font-size: 20px;
+}
+
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-events {
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+  border: 1px solid #555;
 }

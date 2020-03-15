@@ -6,6 +6,10 @@ import { AdminExoComponent } from './component';
 import { CreateExerciseComponent } from './component/create-exercise/create-exercise.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -15,7 +19,11 @@ import {MatListModule} from '@angular/material/list';
     CommonModule,
     AdministratorRoutingModule,
     MatTabsModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class AdministratorModule { }
