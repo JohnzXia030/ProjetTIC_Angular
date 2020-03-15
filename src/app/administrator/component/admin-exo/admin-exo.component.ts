@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { CategoryService } from '../../../services/category.service'
 import { ExerciseService } from '../../../services/exercise.service'
 import {FormControl} from '@angular/forms';
+import { MatTabChangeEvent } from '@angular/material';
 
 @Component({
   selector: 'app-admin-exo',
