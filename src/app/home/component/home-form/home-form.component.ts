@@ -35,7 +35,7 @@ export class HomeFormComponent implements OnInit {
   }
   
   onSubmit(data){
-    //data and model represents both the information submitted
+    //data and model represent both the information submitted
     this._http
     .post("api/user/getLogInfo", 
           JSON.stringify(this.model),{responseType: 'text'})
