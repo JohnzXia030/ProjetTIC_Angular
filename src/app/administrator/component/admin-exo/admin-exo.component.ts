@@ -30,6 +30,13 @@ export class AdminExoComponent implements OnInit {
 	ngOnInit() {
 		this.getExercisesByGroup();
 		this.getAllCategories();
+
+		let category: Category = new Category();
+		category.id = 1;
+		this.categoryService.getCategoryById(JSON.stringify(category)).subscribe(result => console.log(result))
+
+		category.name="coucou";
+		console.log(JSON.stringify(category))
   	}
 
 
@@ -38,7 +45,6 @@ export class AdminExoComponent implements OnInit {
   		this.exerciseService.createExercise(this.exo).subscribe(result =>
   			this.getExercisesByGroup()
   		);
-
 	}
 
 	deleteExercise(exercise: Exercise){
@@ -70,6 +76,9 @@ export class AdminExoComponent implements OnInit {
 				this.categories = results
 			}
 		)
+				let cat: Category = new Category();
+		cat.id = 1;
+		console.log(cat)
 	}
 
 	tabChanged(tabChangeEvent: MatTabChangeEvent): void {

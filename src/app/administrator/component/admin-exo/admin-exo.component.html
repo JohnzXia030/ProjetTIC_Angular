@@ -1,13 +1,14 @@
-<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
-	<mat-tab *ngFor="let category of categories; let index = index" role="list" [label]="category.name">
-	  	<mat-list role="list">
-		  	<mat-list-item role="listitem" *ngFor="let exo of exercises">
-		  		Id : {{exo.idExercise}} Enoncé : {{exo.exerciseText}}
-		  		<button (click)="deleteExercise(exo)">x</button>
-			</mat-list-item>
-		</mat-list>
-	</mat-tab>
-</mat-tab-group>
+<app-admin-nav></app-admin-nav>
+	<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+		<mat-tab *ngFor="let category of categories; let index = index" role="list" [label]="category.name">
+		  	<mat-list role="list">
+			  	<mat-list-item role="listitem" *ngFor="let exo of exercises">
+			  		Id : {{exo.idExercise}} Enoncé : {{exo.exerciseText}}
+			  		<button (click)="deleteExercise(exo)">x</button>
+				</mat-list-item>
+			</mat-list>
+		</mat-tab>
+	</mat-tab-group>
 
 <div>
   <form (ngSubmit)="onSubmit()" class="example-form">
@@ -30,9 +31,4 @@
     <button  type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>
-
-<button (click)="getExercisesByGroup()">Actualize</button>
-<button (click)="testLog()">sqdf</button>
-{{exo.groupId}}
-
 

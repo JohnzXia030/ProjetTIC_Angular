@@ -36,9 +36,7 @@ export class StudentExerciseComponent implements OnInit {
     console.log(JSON.stringify(this.exercise))
     this.http.post("/api/exercise/getExoById", JSON.stringify(this.exercise), {responseType: 'text'}).subscribe(results => {
       this.resp = JSON.parse(results);
-      console.log(results+'mlolol')
-      this.exerciseDB = this.resp.Data,
-        console.log(this.exerciseDB.exerciseCorrection)
+      this.exerciseDB = this.resp.Data
     });
   }
 

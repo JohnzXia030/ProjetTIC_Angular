@@ -26,7 +26,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     FormsModule,
     ReactiveFormsModule,
     MatMenuModule,
-    MatSidenavModule,
+    MatSidenavModule, 
     MatCheckboxModule
   ]
 })

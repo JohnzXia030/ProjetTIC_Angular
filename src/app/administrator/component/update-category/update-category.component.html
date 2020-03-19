@@ -1,0 +1,13 @@
+<h5>Catégorie {{data.category.id}} : {{data.category.name}}</h5>
+
+<form (ngSubmit)="onSubmit()" >
+	<mat-form-field>
+	  <mat-label>Nouvel ID </mat-label>
+	  <input matInput [(ngModel)]="category.id" name="id"> 
+	</mat-form-field>
+	<mat-form-field>
+	  <mat-label>Nouveau nom </mat-label>
+	  <input matInput [(ngModel)]="category.name" name="name"> 
+	</mat-form-field>
+	<button  type="submit" class="btn btn-success">Enregistrer</button>
+</form>
