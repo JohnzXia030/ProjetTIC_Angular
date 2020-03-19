@@ -35,7 +35,7 @@ export class HomeFormComponent implements OnInit {
   }
   
   onSubmit(data){
-    //data and model represents both the information submitted
+    //data and model represent both the information submitted
     this._http
     .post("api/user/getLogInfo", 
           JSON.stringify(this.model),{responseType: 'text'})
@@ -49,7 +49,10 @@ export class HomeFormComponent implements OnInit {
             } 
             else if(this.responseUser.StatusCode==200){
               console.log("log in");
+              if (this.responseUser.uid==2){
               this.router.navigateByUrl("student/account");
+              } else 
+              this.router.navigateByUrl("administrator");
             }
           }
     );

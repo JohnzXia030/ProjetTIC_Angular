@@ -9,7 +9,7 @@ const routes: Routes = [
     path:'home',
     component:HomeContainerComponent,
     pathMatch:'full',
-    children:[
+    /* children:[
       {
         path:'connexion',
         component:HomeFormComponent,
@@ -21,7 +21,7 @@ const routes: Routes = [
         pathMatch:'full'
       }
       
-    ]
+    ] */
   },
   {
     path:'home/connexion',
