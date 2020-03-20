@@ -23,7 +23,11 @@ export class CategoryService {
 	}
 
 	deleteCategory(category: Category){
-		let id = category.id;
+		let id = category.idCategory;
 		return this.http.delete(`api/category/deleteCategory/${id}`)
+	}
+
+	updateCategory(category: Category){
+		return this.http.post("api/category/updateCategory", category)
 	}
 }

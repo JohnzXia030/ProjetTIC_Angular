@@ -14,6 +14,7 @@ import {UpdateCategoryComponent} from '../update-category/update-category.compon
   selector: 'app-admin-category',
   templateUrl: './admin-category.component.html',
   styleUrls: ['./admin-category.component.scss']
+
 })
 export class AdminCategoryComponent implements OnInit {
 
@@ -66,6 +67,15 @@ export class AdminCategoryComponent implements OnInit {
   displayUpdate(category: Category){
     const dialogRef = this.dialog.open(UpdateCategoryComponent,{
       data: {category: category}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result instanceof Object){
+        category = result;
+        this.categoryService.updateCategory(category).subscribe( results =>
+          this.getCategories()
+        );
+      }
     });
   }
 

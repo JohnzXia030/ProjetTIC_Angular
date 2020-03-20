@@ -1,6 +1,6 @@
 <app-admin-nav></app-admin-nav>
 	<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
-		<mat-tab *ngFor="let category of categories; let index = index" role="list" [label]="category.name">
+		<mat-tab *ngFor="let category of categories; let index = index" role="list" [label]="category.nameCategory">
 		  	<mat-list role="list">
 			  	<mat-list-item role="listitem" *ngFor="let exo of exercises">
 			  		Id : {{exo.idExercise}} Enoncé : {{exo.exerciseText}}
@@ -23,8 +23,8 @@
 	<mat-form-field>
 	  <mat-label>Category</mat-label>
 	  <mat-select [(value)]="exo.groupId">
-	    <mat-option *ngFor="let category of categories" [value]="category.id">
-	      {{category.name}}
+	    <mat-option *ngFor="let category of categories" [value]="category.idCategory">
+	      {{category.nameCategory}}
 	    </mat-option>
 	  </mat-select>
 	</mat-form-field>

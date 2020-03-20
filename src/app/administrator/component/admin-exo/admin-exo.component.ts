@@ -32,10 +32,10 @@ export class AdminExoComponent implements OnInit {
 		this.getAllCategories();
 
 		let category: Category = new Category();
-		category.id = 1;
+		category.idCategory = 1;
 		this.categoryService.getCategoryById(JSON.stringify(category)).subscribe(result => console.log(result))
 
-		category.name="coucou";
+		category.nameCategory="coucou";
 		console.log(JSON.stringify(category))
   	}
 
@@ -77,7 +77,7 @@ export class AdminExoComponent implements OnInit {
 			}
 		)
 				let cat: Category = new Category();
-		cat.id = 1;
+		cat.idCategory = 1;
 		console.log(cat)
 	}
 

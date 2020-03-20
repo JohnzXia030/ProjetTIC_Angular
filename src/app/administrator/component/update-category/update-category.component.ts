@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { Category } from '../../../entities/category'
 
 @Component({
@@ -11,9 +11,10 @@ export class UpdateCategoryComponent implements OnInit {
 
 	category: Category= new Category();
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public dialogRef: MatDialogRef<UpdateCategoryComponent>,
+  	@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
+  	this.category = this.data.category
   }
-
 }

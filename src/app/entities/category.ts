@@ -1,5 +1,6 @@
 export class Category {
-	public id: number;
-	public name: string;
+	public idCategory: number;
+	public nameCategory: string;
+	public orderCategory: number;
 }
 

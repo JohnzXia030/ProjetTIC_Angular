@@ -3,7 +3,7 @@
 <mat-list role="list">
   	<mat-list-item role="listitem" *ngFor="let category of categories">
   		<mat-divider></mat-divider>
-  		Id : {{category.id}} Nom de la catégorie : {{category.name}}
+  		 Nom de la catégorie : {{category.nameCategory}} Ordre de difficulté : {{category.orderCategory}}
   		<button (click)="deleteCategory(category)" class="btn btn-danger">Delete</button>
   		<button (click)="displayUpdate(category)" class="btn btn-warning">Update</button>
 	</mat-list-item>
@@ -16,12 +16,12 @@
 <div *ngIf="displayAdd">
   <form (ngSubmit)="onSubmit()" class="example-form">
     <mat-form-field>
-      <mat-label>ID de la catégorie </mat-label>
-      <input matInput [(ngModel)]="category.id" name="id"> 
+      <mat-label>Nom de la catégorie </mat-label>
+      <input matInput [(ngModel)]="category.nameCategory" name="name"> 
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Nom de la catégorie </mat-label>
-      <input matInput [(ngModel)]="category.name" name="name"> 
+      <mat-label>Ordre de difficulté</mat-label>
+      <input matInput [(ngModel)]="category.orderCategory" name="ordre"> 
     </mat-form-field>
     <button  type="submit" class="btn btn-success">Create Category</button>
   </form>
