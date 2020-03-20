@@ -63,7 +63,7 @@ export class AdminExoComponent implements OnInit {
 	}
 
 	getExercisesByGroup(){
-		this.exerciseService.getExercisesByGroup(this.tabSelected+1).subscribe(result => 
+		this.exerciseService.getExercisesByGroup(this.tabSelected).subscribe(result => 
 			{
 				this.exercises = result
 			}
@@ -82,7 +82,8 @@ export class AdminExoComponent implements OnInit {
 	}
 
 	tabChanged(tabChangeEvent: MatTabChangeEvent): void {
-	  this.tabSelected=tabChangeEvent.index;
+	  //this.tabSelected=tabChangeEvent.index;
+		this.tabSelected=this.categories[tabChangeEvent.index].idCategory
 	  this.getExercisesByGroup()
 	}
 
