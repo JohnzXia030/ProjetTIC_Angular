@@ -59,7 +59,6 @@ export class HomeFormComponent implements OnInit {
               if (this.responseUser.Data.userClass==2){
               this.router.navigateByUrl("student/account");
               } else 
-              
               this.router.navigateByUrl("administrator");
             }
           }
