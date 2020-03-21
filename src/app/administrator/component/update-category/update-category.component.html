@@ -1,0 +1,13 @@
+<h5>Catégorie {{data.category.nameCategory}} / Ordre : {{data.category.orderCategory}}</h5>
+
+<form (ngSubmit)="onSubmit()" >
+	<mat-form-field>
+	  <mat-label>Nouveau nom </mat-label>
+	  <input matInput [(ngModel)]="category.nameCategory" name="name"> 
+	</mat-form-field>
+	<mat-form-field>
+	  <mat-label>Nouvel ordre </mat-label>
+	  <input matInput [(ngModel)]="category.orderCategory" name="order"> 
+	</mat-form-field>
+	<button  class="btn btn-success" [mat-dialog-close]="category">Enregistrer</button>
+</form>

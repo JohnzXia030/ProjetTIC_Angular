@@ -1,2 +1,4 @@
 export * from './admin-exo';
-export * from './create-exercise';
+export * from './admin-home';
+export * from './admin-category';
+
