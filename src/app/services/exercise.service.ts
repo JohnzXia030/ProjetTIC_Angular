@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Exercise } from '../entities/exercise'
 import {HttpClient} from "@angular/common/http";
 import { Observable, of } from 'rxjs';
+import {Category} from "../entities/category";
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,8 @@ export class ExerciseService {
   }
 
   getExercisesByGroup(id:number){
-  	let exercise: Exercise = new Exercise();
-  	exercise.groupId=id;
-  	return this.http.post<Exercise[]>("api/exercise/getExercisesByGroup", JSON.stringify(exercise))
+  	let category : Category = new Category();
+  	category.idCategory = id;
+  	return this.http.post<Exercise[]>("api/exercise/getExercisesByGroup", JSON.stringify(category))
   }
 }
