@@ -10,7 +10,7 @@ import { userInfo } from 'src/app/entities/user';
   styleUrls: ['./home-inscription.component.css']
 })
 export class HomeInscriptionComponent implements OnInit {
-  @Input() model: userInfo;
+  public model: userInfo;
   public error;
   public respInscription;
   public test;
@@ -22,6 +22,7 @@ export class HomeInscriptionComponent implements OnInit {
   }
   
   onSubmit(data){
+    console.log(this.model.userName);
     if (data.password!=this.pw2){
       this.error = "Please re-confirm the password";
       return;

@@ -41,6 +41,7 @@ export class HomeFormComponent implements OnInit {
           JSON.stringify(this.model),{responseType: 'text'})
     .subscribe(
           results => {
+            console.log(this.model.userName);
             this.responseUser= JSON.parse(results);
             if (this.responseUser.StatusCode==401){
               alert(this.responseUser.StatusMessage);
