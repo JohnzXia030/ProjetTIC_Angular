@@ -23,7 +23,7 @@
 
     <form (ngSubmit)="onSubmit(inscriptionForm.value)" #inscriptionForm="ngForm">
         <p>Email:<span style="color:red"> *</span></p>
-        <input class="form-control" type="text" id="email1" required="required" size="20" [(ngModel)]="model.email" name="email" placeholder="sample@mail.com">
+        <input class="form-control" type="email" id="email1" required="required" size="20" [(ngModel)]="model.email" name="email" placeholder="sample@mail.com">
         <br>
         <p>Username:<span style="color:red"> *</span></p>
         <input class="form-control" type="text" id="username1" required="required" size="20" [(ngModel)]="model.username" name="username" placeholder="emmanuel.macron">

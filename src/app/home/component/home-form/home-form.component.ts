@@ -49,9 +49,16 @@ export class HomeFormComponent implements OnInit {
             } 
             else if(this.responseUser.StatusCode==200){
               console.log("log in");
-              if (this.responseUser.uid==2){
+              for (const key in this.responseUser.Data) {
+                if (this.responseUser.Data.hasOwnProperty(key)) {
+                  const element = this.responseUser.Data[key];
+                  sessionStorage.setItem(key,element);
+                }
+              }
+              if (this.responseUser.groupid==2){
               this.router.navigateByUrl("student/account");
               } else 
+              
               this.router.navigateByUrl("administrator");
             }
           }
