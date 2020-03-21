@@ -3,22 +3,16 @@ import { HttpClient } from '@angular/common/http'
 import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { FormArray,ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router';
+import { userInfo } from 'src/app/entities/user';
 
-export class userInfo {
-  constructor(
-    public username: string,
-    public email:   string,
-    public password: string,
-    public groupid : number
-  ) {  }
-}
+
 @Component({
   selector: 'app-home-form',
   templateUrl: './home-form.component.html',
   styleUrls: ['./home-form.component.css']
 })
 export class HomeFormComponent implements OnInit {
-  public model ;
+  public model:userInfo;
   public responseUser;
   @Output() user:any;
   public error;
@@ -41,6 +35,12 @@ export class HomeFormComponent implements OnInit {
           JSON.stringify(this.model),{responseType: 'text'})
     .subscribe(
           results => {
+            for (const key in this.model) {
+              if (this.model.hasOwnProperty(key)) {
+                const element = this.model[key];
+                console.log(key+":"+element);
+              }
+            }
             console.log(this.model.userName);
             this.responseUser= JSON.parse(results);
             if (this.responseUser.StatusCode==401){
