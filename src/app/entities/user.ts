@@ -1,8 +1,8 @@
 export class userInfo {
     constructor(
-      public username: string,
-      public email:   string,
-      public password: string,
-      public groupid : number
+      public userName: string,
+      public userEmail:   string,
+      public userPassword: string,
+      public userClass : number
     ) {  }
   }

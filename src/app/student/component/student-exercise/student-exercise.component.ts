@@ -10,7 +10,7 @@ import {Exercise, jsonExo} from '../../../entities/exercise';
   styleUrls: ['./student-exercise.component.css']
 })
 export class StudentExerciseComponent implements OnInit {
-
+  
   idExerciseToShow = 30;
   exercise: Exercise;
   model: SqlQuery;
