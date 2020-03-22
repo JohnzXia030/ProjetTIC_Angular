@@ -1,3 +1,17 @@
-.mat-list{
-	margin-top: 48px;
+h1{
+	margin: 70px auto 30px auto;
+	width: 20%;
+}
+
+.container{
+	display:flex;
+	height: 100%;
+}
+
+.flex-container{
+	display:flex;
+}
+
+.flex-item{
+	flex: 1 1 0px;
 }
