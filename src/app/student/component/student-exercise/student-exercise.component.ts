@@ -10,7 +10,7 @@ import {Exercise, jsonExo} from '../../../entities/exercise';
   styleUrls: ['./student-exercise.component.css']
 })
 export class StudentExerciseComponent implements OnInit {
-
+  
   idExerciseToShow = 30;
   exercise: Exercise;
   model: SqlQuery;
@@ -85,11 +85,11 @@ export class StudentExerciseComponent implements OnInit {
   }
 
   trueOrFalse() {
-    if (this.exerciseDB.exerciseCorrection.indexOf(this.model.sqlQuery) >= 0) {
+    /*if (this.exerciseDB.exerciseCorrection.indexOf(this.model.sqlQuery) >= 0) {
       this.correct = true;
     } else {
       this.correct = false;
-    }
+    }*/
   }
 
   nextExercise() {

@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { userInfo } from '../home-form';
+
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { userInfo } from 'src/app/entities/user';
 
 @Component({
   selector: 'app-home-inscription',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-inscription.component.css']
 })
 export class HomeInscriptionComponent implements OnInit {
-  @Input() model: userInfo;
+  public model: userInfo;
   public error;
   public respInscription;
   public test;
@@ -21,6 +22,7 @@ export class HomeInscriptionComponent implements OnInit {
   }
   
   onSubmit(data){
+    console.log(this.model.userName);
     if (data.password!=this.pw2){
       this.error = "Please re-confirm the password";
       return;

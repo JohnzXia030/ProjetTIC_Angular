@@ -4,8 +4,8 @@ import {Subscription} from 'rxjs';
 
 export class Exercise {
 	public idExercise: number;
-	public textExercise: string;
-	public idCategory: number;
+	public exerciseText: string;
+	public exerciseCorrection: string;
 }
 
 export class jsonExo {

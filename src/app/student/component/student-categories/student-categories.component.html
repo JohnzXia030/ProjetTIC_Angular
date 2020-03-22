@@ -1,0 +1,16 @@
+<app-student-nav></app-student-nav>
+<div class="container">
+	<mat-card class="cateCard"  *ngFor="let category of categories">
+		<mat-card-header>
+			<mat-card-title>
+				{{category.nameCategory}}
+			</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+		</mat-card-content>
+		<mat-card-actions>
+			<button class="btn btn-success"><a [routerLink]="['../exercise', category.idCategory]">Choisir cette catégorie</a></button>
+		</mat-card-actions>
+	</mat-card>
+
+</div>

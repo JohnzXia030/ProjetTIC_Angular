@@ -19,24 +19,25 @@ export class AdminExoComponent implements OnInit {
 	exo: Exercise = new Exercise();
 	exercises: Exercise[];
 	categories: Category[];
-	tabSelected: number=0;
+	tabSelected: number=1;
 	model: string;
-	
 
-	constructor(public http:HttpClient, 
+
+	constructor(public http:HttpClient,
 		public categoryService: CategoryService,
 		public exerciseService: ExerciseService ) { }
 
 	ngOnInit() {
 		this.getExercisesByGroup();
 		this.getAllCategories();
-
-		let category: Category = new Category();
-		category.idCategory = 1;
-		this.categoryService.getCategoryById(JSON.stringify(category)).subscribe(result => console.log(result))
-
-		category.nameCategory="coucou";
-		console.log(JSON.stringify(category))
+		console.log(this.categories)
+    	console.log(this.tabSelected)
+		// let category: Category = new Category();
+		// category.idCategory = 1;
+		// this.categoryService.getCategoryById(JSON.stringify(category)).subscribe(result => console.log(result))
+    //
+		// category.nameCategory="coucou";
+		// console.log(JSON.stringify(category))
   	}
 
 
@@ -64,6 +65,7 @@ export class AdminExoComponent implements OnInit {
 
 	getExercisesByGroup(){
 		this.exerciseService.getExercisesByGroup(this.tabSelected).subscribe(result => 
+
 			{
 				this.exercises = result
 			}
@@ -82,8 +84,8 @@ export class AdminExoComponent implements OnInit {
 	}
 
 	tabChanged(tabChangeEvent: MatTabChangeEvent): void {
-	  //this.tabSelected=tabChangeEvent.index;
-		this.tabSelected=this.categories[tabChangeEvent.index].idCategory
+	  this.tabSelected=this.categories[0].idCategory;
+	  this.tabSelected=this.categories[tabChangeEvent.index].idCategory;
 	  this.getExercisesByGroup()
 	}
 
