@@ -35,12 +35,12 @@ export class HomeFormComponent implements OnInit {
           JSON.stringify(this.model),{responseType: 'text'})
     .subscribe(
           results => {
-            for (const key in this.model) {
-              if (this.model.hasOwnProperty(key)) {
-                const element = this.model[key];
-                console.log(key+":"+element);
-              }
-            }
+            // for (const key in this.model) {
+            //   if (this.model.hasOwnProperty(key)) {
+            //     const element = this.model[key];
+            //     console.log(key+":"+element);
+            //   }
+            // }
             console.log(this.model.userName);
             this.responseUser= JSON.parse(results);
             if (this.responseUser.StatusCode==401){
@@ -56,10 +56,9 @@ export class HomeFormComponent implements OnInit {
                   sessionStorage.setItem(key,element);
                 }
               }
-              if (this.responseUser.groupid==2){
+              if (this.responseUser.Data.userClass==2){
               this.router.navigateByUrl("student/account");
               } else 
-              
               this.router.navigateByUrl("administrator");
             }
           }
