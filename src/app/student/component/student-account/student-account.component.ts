@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { userInfo } from 'src/app/entities/user';
+import { userInfo } from 'src/app/entities/userInfo';
 
 @Component({
   selector: 'app-student-account',
@@ -8,16 +8,20 @@ import { userInfo } from 'src/app/entities/user';
 })
 export class StudentAccountComponent implements OnInit {
   public user: userInfo;
-  public info: any[];
+  public uinfo: any[];
   constructor() { }
 
   ngOnInit() {
+    console.log("12:"+sessionStorage.getItem("userName"));
     for (const key in sessionStorage) {
-      if (sessionStorage.hasOwnProperty(key)) {
-        const element = sessionStorage[key];
-        this.user[key] = element;
-      }
+      //console.log("key:"+key);
+      const element = sessionStorage.getItem(key);
+      
+      //console.log("1"+element);
+      
     }
+
+    console.log(this.user.getAllParam());
     console.log("1"+this.user.userName);
   }
 

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { FormArray,ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router';
-import { userInfo } from 'src/app/entities/user';
+import { userInfo } from 'src/app/entities/userInfo';
 
 
 @Component({
@@ -16,11 +16,7 @@ export class HomeFormComponent implements OnInit {
   public responseUser;
   @Output() user:any;
   public error;
-  public connexionForm = {
-    username:'',
-    password:'',
-    groupid:''
-  }
+  
   
   constructor(private _http: HttpClient,private router: Router) {}
 
@@ -56,6 +52,8 @@ export class HomeFormComponent implements OnInit {
                   sessionStorage.setItem(key,element);
                 }
               }
+              console.log(sessionStorage.getItem("userName"));
+              console.log(this.model.getAllParam());
               if (this.responseUser.Data.userClass==2){
               this.router.navigateByUrl("student/account");
               } else 

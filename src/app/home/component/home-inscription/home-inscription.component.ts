@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { userInfo } from 'src/app/entities/user';
+import { userInfo } from 'src/app/entities/userInfo';
 
 @Component({
   selector: 'app-home-inscription',

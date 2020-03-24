@@ -50,8 +50,8 @@ export class StudentExerciseComponent implements OnInit {
     this.dataResults = null;
     this.http.post("/api/sqlExecutor/testSql", JSON.stringify(this.model), {responseType: 'text'}).subscribe(results => {
         this.dataResults = JSON.parse(results),
-          this.setDataSourceAndDisplayedColumns(),
-          this.trueOrFalse()
+          this.setDataSourceAndDisplayedColumns();
+          //this.trueOrFalse()
       }
     );
   }
@@ -84,13 +84,13 @@ export class StudentExerciseComponent implements OnInit {
     }
   }
 
-  trueOrFalse() {
-    if (this.exerciseDB.exerciseCorrection.indexOf(this.model.sqlQuery) >= 0) {
-      this.correct = true;
-    } else {
-      this.correct = false;
-    }
-  }
+  // trueOrFalse() {
+  //   if (this.exerciseDB.exerciseCorrection.indexOf(this.model.sqlQuery) >= 0) {
+  //     this.correct = true;
+  //   } else {
+  //     this.correct = false;
+  //   }
+  // }
 
   nextExercise() {
     this.idExerciseToShow++;
