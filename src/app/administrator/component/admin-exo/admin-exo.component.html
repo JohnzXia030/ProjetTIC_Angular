@@ -3,31 +3,37 @@
 		<mat-tab *ngFor="let category of categories; let index = index" role="list" [label]="category.nameCategory">
 		  	<mat-list role="list">
 			  	<mat-list-item role="listitem" *ngFor="let exo of exercises">
-			  		Id : {{exo.idExercise}} Enoncé : {{exo.textExercise}}
-			  		<button (click)="deleteExercise(exo)">x</button>
+					<mat-divider></mat-divider>
+			        <div class="container">
+			        	<span class="display-left">
+			    			<div class="flex-item enonce">{{exo.textExercise}}</div>
+			    		</span>
+			      		<button (click)="deleteExercise(exo)" class="btn btn-danger flex-item">Delete</button>
+			      		<button (click)="displayUpdate(exo)" class="btn btn-warning flex-item">Update</button>
+			        </div>
 				</mat-list-item>
 			</mat-list>
 		</mat-tab>
 	</mat-tab-group>
 
-<div>
+<button [ngClass]="displayAdd ? 'btn-danger' : 'btn-success'" class="btn addExo" (click)="displayAddExercise()">{{buttonDisplayAdd}} Ajouter un exercice</button>
+
+<div *ngIf="displayAdd" class="form-container">
   <form (ngSubmit)="onSubmit()" class="example-form">
     <mat-form-field>
       <mat-label>Enoncé de l'exercice</mat-label>
       <textarea matInput type="text" [(ngModel)]="exo.textExercise" name="énoncé"> </textarea>
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Correction de l'exercice</mat-label>
-      <textarea matInput type="text"  [(ngModel)]="exo.exerciseCorrection" name="correction"> </textarea>
-    </mat-form-field>
+    <br>
 	<mat-form-field>
 	  <mat-label>Category</mat-label>
 	  <mat-select [(value)]="exo.idCategory">
-	    <mat-option *ngFor="let category of categories" [value]="category.idCategory">
-	      {{category.nameCategory}}
-	    </mat-option>
-	  </mat-select>
+		    <mat-option *ngFor="let category of categories" [value]="category.idCategory">
+		      {{category.nameCategory}}
+		    </mat-option>
+		</mat-select>
 	</mat-form-field>
+	<br>
     <button  type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>

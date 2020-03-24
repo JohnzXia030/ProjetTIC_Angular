@@ -17,11 +17,12 @@ import { AdminNavComponent } from './component/admin-nav/admin-nav.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateCategoryComponent } from './component/update-category/update-category.component';
+import { UpdateExerciseComponent } from './component/update-exercise/update-exercise.component';
 
 
 
 @NgModule({
-  declarations: [AdminExoComponent, AdminHomeComponent, AdminCategoryComponent, AdminNavComponent, UpdateCategoryComponent],
+  declarations: [AdminExoComponent, AdminHomeComponent, AdminCategoryComponent, AdminNavComponent, UpdateCategoryComponent, UpdateExerciseComponent],
   imports: [
     CommonModule,
     AdministratorRoutingModule,
@@ -37,7 +38,8 @@ import { UpdateCategoryComponent } from './component/update-category/update-cate
     MatDialogModule
   ],
   entryComponents: [
-    UpdateCategoryComponent
+    UpdateCategoryComponent,
+    UpdateExerciseComponent
   ]
 })
 export class AdministratorModule { }

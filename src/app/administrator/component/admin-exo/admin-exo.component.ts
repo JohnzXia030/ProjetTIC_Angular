@@ -8,6 +8,8 @@ import { ExerciseService } from '../../../services/exercise.service'
 import {FormControl} from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
+import {UpdateExerciseComponent} from '../update-exercise/update-exercise.component'
 
 @Component({
   selector: 'app-admin-exo',
@@ -21,24 +23,30 @@ export class AdminExoComponent implements OnInit {
 	categories: Category[];
 	tabSelected: number=1;
 	model: string;
+	displayAdd:Boolean = false;
+  	buttonDisplayAdd = "+";
 
 
 	constructor(public http:HttpClient,
 		public categoryService: CategoryService,
-		public exerciseService: ExerciseService ) { }
+		public exerciseService: ExerciseService,
+		public dialog: MatDialog ) { }
 
 	ngOnInit() {
 		this.getExercisesByGroup();
 		this.getAllCategories();
-		console.log(this.categories)
-    	console.log(this.tabSelected)
-		// let category: Category = new Category();
-		// category.idCategory = 1;
-		// this.categoryService.getCategoryById(JSON.stringify(category)).subscribe(result => console.log(result))
-    //
-		// category.nameCategory="coucou";
-		// console.log(JSON.stringify(category))
   	}
+
+	  displayAddExercise(){  
+	    if (!this.displayAdd){
+	      this.displayAdd = true;
+	      this.buttonDisplayAdd = "-";
+	    }
+	    else {
+	      this.displayAdd = false;
+	      this.buttonDisplayAdd = "+";
+	    }
+	  }
 
 
   	createExercise(){
@@ -93,9 +101,16 @@ export class AdminExoComponent implements OnInit {
 		this.createExercise();
 	}
 
-	testLog(){
-		let id = 13;
-		let str:string = `coucou/${id}`
-		console.log(str)
-	}
+
+  displayUpdate(exercise: Exercise){
+    const dialogRef = this.dialog.open(UpdateExerciseComponent,{
+      data: {exercise: exercise}, height : '80%', width: '80%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result instanceof Object){
+        exercise = result;
+      }
+    });
+  }
 }

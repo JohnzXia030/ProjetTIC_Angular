@@ -1,0 +1,25 @@
+<h3>Exercice</h3>
+<div *ngIf="!displayEnonce">
+	Enoncé : {{exercise.textExercise}}
+</div>
+<div *ngIf= "displayEnonce">
+	<textarea matInput [(ngModel)]="exercise.textExercise"></textarea>
+	<button [mat-dialog-close]="true" class="btn btn-success marg-bot" (click)="updateExercise()">Soumettre le nouvel énoncé</button>
+	<button class="btn btn-danger marg-bot" (click)="displayUpdateEnonce()">Annuler</button>
+</div>
+<button *ngIf= "!displayEnonce" class="btn btn-success marg-bot" (click)="displayUpdateEnonce()">Changer l'énoncé</button>
+
+
+
+<h3>Corrections</h3>
+
+<div *ngFor="let correction of corrections">
+	<mat-divider></mat-divider>
+	<div class="flex-container">
+		<span class="full-width">{{correction.textCorrection}}</span>
+		<button class="btn btn-danger" (click)="deleteCorrection(correction)">Delete</button>
+	</div>
+</div>
+
+<textarea matInput [(ngModel)]="correction.textCorrection"></textarea>
+<button class="btn btn-success" (click)="addCorrection()">Ajouter une correction</button>
