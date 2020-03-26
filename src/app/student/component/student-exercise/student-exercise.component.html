@@ -1,16 +1,17 @@
 <app-student-nav></app-student-nav>
+<div>a</div>
 
-<div>
-  <h1>Exercice {{exercise.idExercise}} </h1>
-  <mat-card>{{exercise.textExercise}}</mat-card>
+<div *ngIf="exercise" class="marg-top">
+  <mat-card >Enoncé : {{exercise.textExercise}}</mat-card>
 </div>
+
 
 <div class="example-form">
   <form (ngSubmit)="onSubmit()">
     <mat-form-field class="example-full-width">
       <mat-label>Votre requête</mat-label>
-      <input [(ngModel)]="model.sqlQuery" id="sqlQuery" matInput name="sqlQuery" placeholder="select ..." type="text"
-             value="">
+      <textarea [(ngModel)]="model.sqlQuery" id="sqlQuery" matInput name="sqlQuery" placeholder="select ..." type="text"
+             value=""></textarea>
 
       <button (click)="this.model.sqlQuery='';correct=null;this.dataResults=null" *ngIf="this.model.sqlQuery"
               aria-label="Clear" mat-button mat-icon-button
