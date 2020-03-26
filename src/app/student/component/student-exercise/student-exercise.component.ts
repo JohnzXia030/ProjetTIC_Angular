@@ -1,7 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {SqlQuery} from '../../../shared/entities/sqlQuery';
 import {HttpClient} from "@angular/common/http";
-import {Exercise, jsonExo} from '../../../shared/entities/exercise';
+
+
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Exercise, jsonExo } from 'src/app/shared/entities/exercise';
+import { ExerciseService } from 'src/app/core/services/exercise.service';
 
 
 @Component({
@@ -11,49 +16,62 @@ import {Exercise, jsonExo} from '../../../shared/entities/exercise';
 })
 export class StudentExerciseComponent implements OnInit {
   
-  idExerciseToShow = 30;
+  exercises: Exercise[];
   exercise: Exercise;
-  model: SqlQuery;
+  model: SqlQuery = new SqlQuery("");
   resp: jsonExo;
-  exerciseDB: Exercise;
-  dataResults;
+
   displayedColumns: string[];
   dataSource;
-  correct: boolean;
+  dataResults;
 
-  constructor(private http: HttpClient) {}
+  idCategory:number;
+  posExercise:number=0;
+
+  correct:boolean;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private exerciseService: ExerciseService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
-    this.exercise = new Exercise();
-    this.exercise.idExercise = 1;
-    this.model = new SqlQuery(null);
-    this.resp = new jsonExo();
-    this.exerciseDB = new Exercise();
-    this.dataResults = null;
-    this.displayedColumns = null;
-    this.dataSource = null;
-    this.exercise.idExercise = this.idExerciseToShow;
-    console.log(JSON.stringify(this.exercise))
-    this.http.post("/api/exercise/getExoById", JSON.stringify(this.exercise), {responseType: 'text'}).subscribe(results => {
-      this.resp = JSON.parse(results);
-      this.exerciseDB = this.resp.Data
-    });
-  }
+    this.route.paramMap.subscribe(param =>
+      this.idCategory=+param.get('id')
+    )
 
-  hasSqlSyntaxError() {
-    if (this.dataResults) {
-      return this.dataResults.hasOwnProperty("ErrorCode");
-    }
+    this.exerciseService.getExercisesByGroup(this.idCategory).subscribe(result =>{
+      this.exercises = result
+      this.exercise = this.exercises[this.posExercise]
+      }
+    )
   }
 
   onSubmit() {
     this.dataResults = null;
     this.http.post("/api/sqlExecutor/testSql", JSON.stringify(this.model), {responseType: 'text'}).subscribe(results => {
         this.dataResults = JSON.parse(results),
-          this.setDataSourceAndDisplayedColumns();
+        console.log(this.dataResults)
+          this.setDataSourceAndDisplayedColumns()
+          this.correct = true;
           //this.trueOrFalse()
       }
     );
+  }
+
+  nextExercise(){
+    this.posExercise++
+    this.exercise = this.exercises[this.posExercise];
+  }
+
+  lastExercise(){
+    if (this.posExercise>0){
+      this.posExercise--
+      this.exercise = this.exercises[this.posExercise];
+    }
+
   }
 
   getKeysFromJsonArray() {
@@ -84,22 +102,12 @@ export class StudentExerciseComponent implements OnInit {
     }
   }
 
-  // trueOrFalse() {
-  //   if (this.exerciseDB.exerciseCorrection.indexOf(this.model.sqlQuery) >= 0) {
-  //     this.correct = true;
-  //   } else {
-  //     this.correct = false;
-  //   }
-  // }
-
-  nextExercise() {
-    this.idExerciseToShow++;
-    this.ngOnInit();
-  }
-
-  lastExercise() {
-    this.idExerciseToShow--;
-    this.ngOnInit();
+  trueOrFalse() {
+    /*if (this.exerciseDB.exerciseCorrection.indexOf(this.model.sqlQuery) >= 0) {
+      this.correct = true;
+    } else {
+      this.correct = false;
+    }*/
   }
 
   getErrorCode() {
@@ -113,6 +121,12 @@ export class StudentExerciseComponent implements OnInit {
       return this.dataResults.RootCause;
     }
   }
+
+  hasSqlSyntaxError() {
+    if (this.dataResults) {
+      return this.dataResults.hasOwnProperty("ErrorCode");
+    }
+  }  
 
   events: string[] = [];
   opened: boolean;

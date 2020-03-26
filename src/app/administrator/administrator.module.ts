@@ -18,11 +18,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateCategoryComponent } from './component/update-category/update-category.component';
 import { AuthentificationService } from '../core/authentification/authentification.service';
+import { UpdateExerciseComponent } from './component/update-exercise/update-exercise.component';
 
 
 
 @NgModule({
-  declarations: [AdminExoComponent, AdminHomeComponent, AdminCategoryComponent, AdminNavComponent, UpdateCategoryComponent],
+  declarations: [AdminExoComponent, AdminHomeComponent, AdminCategoryComponent, AdminNavComponent, UpdateCategoryComponent, UpdateExerciseComponent],
   imports: [
     CommonModule,
     AdministratorRoutingModule,
@@ -38,7 +39,8 @@ import { AuthentificationService } from '../core/authentification/authentificati
     MatDialogModule
   ],
   entryComponents: [
-    UpdateCategoryComponent
+    UpdateCategoryComponent,
+    UpdateExerciseComponent
   ]
 })
 export class AdministratorModule { }

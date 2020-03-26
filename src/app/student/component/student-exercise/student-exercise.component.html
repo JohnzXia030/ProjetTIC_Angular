@@ -1,15 +1,18 @@
-<body>
-<div *ngIf="exerciseDB">
-  <h1>Exercice {{exerciseDB.idExercise}} </h1>
-  <mat-card>{{exerciseDB.textExercise}}</mat-card>
+<app-student-nav></app-student-nav>
+<div>a</div>
+
+<div *ngIf="exercise" class="marg-top">
+  <mat-card >Enoncé : {{exercise.textExercise}}</mat-card>
 </div>
+
 
 <div class="example-form">
   <form (ngSubmit)="onSubmit()">
     <mat-form-field class="example-full-width">
       <mat-label>Votre requête</mat-label>
-      <input [(ngModel)]="model.sqlQuery" id="sqlQuery" matInput name="sqlQuery" placeholder="select ..." type="text"
-             value="">
+      <textarea [(ngModel)]="model.sqlQuery" id="sqlQuery" matInput name="sqlQuery" placeholder="select ..." type="text"
+             value=""></textarea>
+
       <button (click)="this.model.sqlQuery='';correct=null;this.dataResults=null" *ngIf="this.model.sqlQuery"
               aria-label="Clear" mat-button mat-icon-button
               matSuffix>
@@ -20,9 +23,10 @@
     <button class="btn btn-success" mat-button type="submit">Submit</button>
 
   </form>
+
   <div class="check-icon-div">
     <div *ngIf="correct==true">
-      <mat-icon class="check-icon" id="true">check</mat-icon>
+      <mat-icon class="check-icon" id="thisrue">check</mat-icon>
       <p class="check-message-true">Bravo!</p>
     </div>
     <div *ngIf="correct==false">
@@ -46,7 +50,6 @@
 </div>
 
 <div class="example-form">
-  <button (click)="lastExercise()" *ngIf="this.idExerciseToShow!=1" class="btn btn-success">Exercice précédent</button>
+  <button (click)="lastExercise()" class="btn btn-success">Exercice précédent</button>
   <button (click)="nextExercise()" class="btn btn-success">Exercice suivant</button>
 </div>
-</body>

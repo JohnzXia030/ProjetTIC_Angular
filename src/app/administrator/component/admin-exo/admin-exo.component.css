@@ -42,8 +42,30 @@
   border-radius: 4px 0 0 4px;
 }
 
-
+.addExo{
+  margin-top: 100px;
+}
 
 .mat-tab-group {
   margin-top: 48px;
+}
+
+.form-container {
+  margin: 2% 20% 0 20%;
+  width: 60%;
+}
+
+.mat-form-field{
+  width: 100%;
+}
+
+.container{
+  display:flex;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.display-left{
+  width:100%;
+  text-align:left;
 }

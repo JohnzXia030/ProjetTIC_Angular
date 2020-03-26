@@ -13,9 +13,12 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { AuthentificationService } from '../core/authentification/authentification.service';
+import { StudentNavComponent } from './component/student-nav/student-nav.component';
+import { StudentCategoriesComponent } from './component/student-categories';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [StudentAccountComponent,StudentExerciseComponent],
+  declarations: [StudentAccountComponent,StudentExerciseComponent, StudentNavComponent, StudentCategoriesComponent],
   imports: [
     MatInputModule,
     CommonModule,
@@ -28,7 +31,8 @@ import { AuthentificationService } from '../core/authentification/authentificati
     ReactiveFormsModule,
     MatMenuModule,
     MatSidenavModule, 
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgbModule
   ]
 })
 export class StudentModule { }

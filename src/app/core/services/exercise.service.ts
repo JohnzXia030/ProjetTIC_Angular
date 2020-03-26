@@ -27,6 +27,12 @@ export class ExerciseService {
   getExercisesByGroup(id:number){
   	let category : Category = new Category();
   	category.idCategory = id;
+    console.log(JSON.stringify(category))
   	return this.http.post<Exercise[]>("api/exercise/getExercisesByGroup", JSON.stringify(category))
+  }
+
+  updateExercise(exercise: Exercise){
+    console.log(JSON.stringify(exercise))
+    return this.http.post("api/exercise/updateExercise", JSON.stringify(exercise))
   }
 }

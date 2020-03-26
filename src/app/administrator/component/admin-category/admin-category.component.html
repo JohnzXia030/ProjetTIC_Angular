@@ -1,14 +1,17 @@
 
 <app-admin-nav></app-admin-nav>
+<h1>Catégories</h1>
 <mat-list role="list">
   	<mat-list-item role="listitem" *ngFor="let category of categories">
   		<mat-divider></mat-divider>
-  		 Nom de la catégorie : {{category.nameCategory}} Ordre de difficulté : {{category.orderCategory}}
-  		<button (click)="deleteCategory(category)" class="btn btn-danger">Delete</button>
-  		<button (click)="displayUpdate(category)" class="btn btn-warning">Update</button>
+        <div class="container">
+    		  <div class="flex-item">Nom de la catégorie : {{category.nameCategory}}</div><div class="flex-item"> Ordre de difficulté : {{category.orderCategory}}</div>
+      		<button (click)="deleteCategory(category)" class="btn btn-danger flex-item">Delete</button>
+      		<button (click)="displayUpdate(category)" class="btn btn-warning flex-item">Update</button>
+        </div>
 	</mat-list-item>
 	<mat-list-item>
-		<button (click)="displayAddCategory()">{{buttonDisplayAdd}}</button>
+		<button [ngClass]="displayAdd ? 'btn-danger' : 'btn-success'" class="btn" (click)="displayAddCategory()">{{buttonDisplayAdd}} Ajouter une catégorie</button>
 	</mat-list-item>
 </mat-list>
 
