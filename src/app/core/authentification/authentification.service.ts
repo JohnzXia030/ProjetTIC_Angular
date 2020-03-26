@@ -6,25 +6,32 @@ import { Router, CanActivate } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthentificationService implements CanActivate {
+  public isAdmin:boolean;
   public resp;
   @Output() loginStatus: boolean = false;
-  constructor(private http:HttpClient,private router:Router) { }
-  canActivate():boolean{
-    let isAdmin: boolean;
-    this.http.get("api/user/getSessionInfo",{responseType: 'text'}).subscribe(
-      results=>{
+  constructor(private http: HttpClient, private router: Router) { }
+
+  canActivate(): boolean {
+    
+    this.http.get("api/user/getSessionInfo", { responseType: 'text' }).subscribe(
+      results => {
         this.resp = JSON.parse(results);
-        if (this.resp.Data.userClass==1){
-          isAdmin = true;
-        }else
-          isAdmin = false;
+        if (this.resp.Data.userClass == 1) {
+          this.isAdmin = true;
           
+          console.log(this.isAdmin);
+        } else
+          this.isAdmin = false;
+
       }
     );
-    return isAdmin;
+    
+    return this.isAdmin;
+    
   }
+
   getLoginStatus() {
-    return this.http.get("api/user/getSessionInfo",{responseType: 'text'});
+    return this.http.get("api/user/getSessionInfo", { responseType: 'text' });
   }
-  
+
 }

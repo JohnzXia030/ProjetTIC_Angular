@@ -25,6 +25,7 @@ export class HomeFormComponent implements OnInit {
     this.auth.getLoginStatus()
     .subscribe(
       results => {
+        console.log("123456");
         this.responseUser = JSON.parse(results);
         if(this.responseUser.LoginStatus=="false"){
           console.log("123456");
