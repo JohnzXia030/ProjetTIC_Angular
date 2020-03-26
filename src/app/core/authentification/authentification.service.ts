@@ -14,7 +14,7 @@ export class AuthentificationService implements CanActivate {
     this.http.get("api/user/getSessionInfo",{responseType: 'text'}).subscribe(
       results=>{
         this.resp = JSON.parse(results);
-        if (this.resp.Data.userClass==2){
+        if (this.resp.Data.userClass==1){
           isAdmin = true;
         }else
           isAdmin = false;
