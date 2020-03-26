@@ -29,8 +29,18 @@ export class userInfo {
     private _userPassword: string,
     private _userClass: number
   ) { }
+
+  
   getAllParam(): string[] {
     return ["userName", "userName ", "userPassword", "userClass"];
+  }
+  toString(): string {
+    return "{" +
+      ", userName='" + this.userName + '\'' +
+      ", userPassword='" + this.userPassword + '\'' +
+      ", userEmail='" + this.userEmail + '\'' +
+      ", userClass=" + this.userClass +
+      '}';
   }
 
 

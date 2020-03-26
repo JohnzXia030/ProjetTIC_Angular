@@ -12,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { AuthentificationService } from '../core/authentification/authentification.service';
 
 @NgModule({
   declarations: [StudentAccountComponent,StudentExerciseComponent],

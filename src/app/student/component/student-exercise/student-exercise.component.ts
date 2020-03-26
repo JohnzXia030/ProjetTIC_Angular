@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {SqlQuery} from '../../../entities/sqlQuery';
+import {SqlQuery} from '../../../shared/entities/sqlQuery';
 import {HttpClient} from "@angular/common/http";
-import {Exercise, jsonExo} from '../../../entities/exercise';
+import {Exercise, jsonExo} from '../../../shared/entities/exercise';
 
 
 @Component({

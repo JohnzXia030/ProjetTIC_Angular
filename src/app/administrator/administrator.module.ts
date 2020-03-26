@@ -17,6 +17,7 @@ import { AdminNavComponent } from './component/admin-nav/admin-nav.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateCategoryComponent } from './component/update-category/update-category.component';
+import { AuthentificationService } from '../core/authentification/authentification.service';
 
 
 

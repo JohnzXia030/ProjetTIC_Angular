@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { Category } from '../../../entities/category'
+import { Category } from '../../../shared/entities/category'
 
 @Component({
   selector: 'app-update-category',

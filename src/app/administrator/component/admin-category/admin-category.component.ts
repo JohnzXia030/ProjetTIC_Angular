@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Exercise } from '../../../entities/exercise'
-import { Category } from '../../../entities/category'
+import { Exercise } from '../../../shared/entities/exercise'
+import { Category } from '../../../shared/entities/category'
 import {HttpClient} from "@angular/common/http";
 import { Observable, of } from 'rxjs';
-import { CategoryService } from '../../../services/category.service'
-import { ExerciseService } from '../../../services/exercise.service'
+import { CategoryService } from '../../../core/services/category.service'
+import { ExerciseService } from '../../../core/services/exercise.service'
 import {MatDividerModule} from '@angular/material/divider';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';

@@ -1,13 +1,19 @@
-<p>
-    student-account works!
-</p>
+<section id="main" class="wrapper style1">
+    <header class="major">
+        <h2>Account</h2>
+    </header>
+</section>
 <div class="form_connect_inscri">
 
-    <div *ngFor="let userinfo of info">
-        <p>
-            {{userinfo}}
-        </p>
-    </div>
-    <p>{{sessionStorage.getItem("userName")}}</p>
+    <form>
+        <p>Username:<span style="color:red"></span></p>
+        <input class="form-control" disabled="disabled" type="text" id="username" required="required" size="20" [(ngModel)]="user.userName" name="username" placeholder="sample@mail.com/emmanuel.macron">
+        <br>
+        <p>Email:<span style="color:red"></span></p>
+        <input [(ngModel)]="user.userEmail" disabled="disabled" class="form-control" id="useremail" name="usermail" type="email" required="required" size="15">
+        <br/>
+        <p *ngIf="error" class=error><strong>{{error}}</strong></p>
+    </form>
+    <!-- <p>{{connectionForm.value|json}}</p> -->
 
 </div>

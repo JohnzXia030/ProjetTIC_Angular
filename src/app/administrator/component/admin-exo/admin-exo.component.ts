@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Exercise } from '../../../entities/exercise'
-import { Category } from '../../../entities/category'
+import { Exercise } from '../../../shared/entities/exercise'
+import { Category } from '../../../shared/entities/category'
 import {HttpClient} from "@angular/common/http";
 import { Observable, of } from 'rxjs';
-import { CategoryService } from '../../../services/category.service'
-import { ExerciseService } from '../../../services/exercise.service'
+import { CategoryService } from '../../../core/services/category.service'
+import { ExerciseService } from '../../../core/services/exercise.service'
 import {FormControl} from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
@@ -31,7 +31,7 @@ export class AdminExoComponent implements OnInit {
 		this.getExercisesByGroup();
 		this.getAllCategories();
 		console.log(this.categories)
-    console.log(this.tabSelected)
+    	console.log(this.tabSelected)
 		// let category: Category = new Category();
 		// category.idCategory = 1;
 		// this.categoryService.getCategoryById(JSON.stringify(category)).subscribe(result => console.log(result))

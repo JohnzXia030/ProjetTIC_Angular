@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Exercise } from '../entities/exercise'
+import { Exercise } from '../../shared/entities/exercise'
 import {HttpClient} from "@angular/common/http";
 import { Observable, of } from 'rxjs';
-import {Category} from "../entities/category";
+import {Category} from "../../shared/entities/category";
 
 @Injectable({
   providedIn: 'root'

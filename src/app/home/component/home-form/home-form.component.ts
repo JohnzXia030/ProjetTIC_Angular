@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { FormArray,ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router';
-import { userInfo } from 'src/app/entities/userInfo';
+import { userInfo } from 'src/app/shared/entities/userInfo';
 
 
 @Component({
