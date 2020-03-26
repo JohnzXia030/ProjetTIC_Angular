@@ -5,10 +5,11 @@ import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from
   providedIn: 'root'
 })
 export class LoginguardService implements CanActivate {
+  
   constructor(private router: Router) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivate(): boolean {
     let isLogin: boolean;
     const user = sessionStorage.getItem("userName");
     if (!user) {
