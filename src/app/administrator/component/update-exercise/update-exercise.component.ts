@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { Exercise } from '../../../entities/exercise'
-import { Correction } from '../../../entities/correction'
-import { CorrectionService } from '../../../services/correction.service'
-import { ExerciseService } from '../../../services/exercise.service'
+
+import { Correction } from '../../../shared/entities/correction'
+import { CorrectionService } from '../../../core/services/correction.service'
+import { Exercise } from 'src/app/shared/entities/exercise';
+import { ExerciseService } from 'src/app/core/services/exercise.service';
+
 
 @Component({
   selector: 'app-update-exercise',

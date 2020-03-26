@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../../../entities/category'
-import { Exercise } from '../../../entities/exercise'
+
 import {HttpClient} from "@angular/common/http";
 import { Observable, of } from 'rxjs';
-import { CategoryService } from '../../../services/category.service'
-import { ExerciseService } from '../../../services/exercise.service'
+import { Category } from 'src/app/shared/entities/category';
+import { CategoryService } from 'src/app/core/services/category.service';
+import { ExerciseService } from 'src/app/core/services/exercise.service';
 
 
 @Component({
