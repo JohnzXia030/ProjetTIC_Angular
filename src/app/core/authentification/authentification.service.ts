@@ -22,7 +22,7 @@ export class AuthentificationService implements CanActivate {
           console.log(this.isAdmin);
         } else
           this.isAdmin = false;
-
+          this.router.navigateByUrl('home/connexion');
       }
     );
     
