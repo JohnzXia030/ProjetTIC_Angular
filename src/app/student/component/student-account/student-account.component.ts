@@ -10,14 +10,18 @@ import { AuthentificationService } from 'src/app/core/authentification/authentif
 export class StudentAccountComponent implements OnInit {
   public user: userInfo;
   public uinfo: any;
+  public resp;
   constructor(private auth: AuthentificationService) { }
 
   ngOnInit() {
-    this.auth.getLoginStatus().subscribe(
+    this.auth.getLoginStatus()
+    .subscribe(
       results => {
-        if (results = false){
+        this.resp = JSON.parse(results);
+        if(this.resp.LoginStatus==false){
           return;
         }
+
       }
     );
     

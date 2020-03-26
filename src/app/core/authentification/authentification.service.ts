@@ -8,6 +8,6 @@ export class AuthentificationService {
   @Output() loginStatus: boolean = false;
   constructor(private http:HttpClient) { }
   getLoginStatus() {
-    return this.http.get("user/testLogin");
+    return this.http.get("api/user/getSessionInfo",{responseType: 'text'});
   }
 }

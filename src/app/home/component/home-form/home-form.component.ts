@@ -4,6 +4,7 @@ import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { FormArray,ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router';
 import { userInfo } from 'src/app/shared/entities/userInfo';
+import { AuthentificationService } from 'src/app/core/authentification/authentification.service';
 
 
 @Component({
@@ -18,9 +19,23 @@ export class HomeFormComponent implements OnInit {
   public error;
   
   
-  constructor(private _http: HttpClient,private router: Router) {}
+  constructor(private _http: HttpClient,private router: Router,private auth: AuthentificationService) {}
 
   ngOnInit() {
+    this.auth.getLoginStatus()
+    .subscribe(
+      results => {
+        this.responseUser = JSON.parse(results);
+        if(this.responseUser.LoginStatus=="false"){
+          console.log("123456");
+        }else {
+          if (this.responseUser.Data.userClass==2){
+          this.router.navigateByUrl("student/account");
+          } else 
+          this.router.navigateByUrl("administrator");
+        }
+      }
+    );
     this.model = new userInfo("","","",2);
   }
   
@@ -63,17 +78,5 @@ export class HomeFormComponent implements OnInit {
     );
   }
 
-
-  /* getUsername(){
-    console.log("first request from crossorigin");
-    this._http.get('api/home/getUser').subscribe(
-      data => {
-        this.user = data;
-      },
-      error => {
-        console.log('Error occured', error);
-      }
-    );
-  } */
 
 }
