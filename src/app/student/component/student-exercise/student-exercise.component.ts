@@ -5,9 +5,13 @@ import {HttpClient} from "@angular/common/http";
 
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
+
+
 import { Exercise, jsonExo } from 'src/app/shared/entities/exercise';
 import { ExerciseService } from 'src/app/core/services/exercise.service';
 import { CorrectionService } from 'src/app/core/services/correction.service';
+import { StudentTableComponent } from '../student-table/student-table.component'
 
 
 @Component({
@@ -35,7 +39,8 @@ export class StudentExerciseComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private exerciseService: ExerciseService,
-    private correctionService: CorrectionService
+    private correctionService: CorrectionService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -135,4 +140,8 @@ export class StudentExerciseComponent implements OnInit {
       return this.dataResults.hasOwnProperty("ErrorCode");
     }
   }  
+
+  displayTables(){
+    const dialogRef = this.dialog.open(StudentTableComponent);
+  }
 }

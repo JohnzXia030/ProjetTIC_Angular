@@ -4,7 +4,9 @@
 <div *ngIf="exercise" class="marg-top">
   <mat-card >Enoncé : {{exercise.textExercise}}</mat-card>
 </div>
-
+<div class="example-form">
+  <button class="btn btn-info" (click)="displayTables()">Montrer les tables</button>
+</div>
 
 <div class="example-form">
   <form (ngSubmit)="onSubmit()">

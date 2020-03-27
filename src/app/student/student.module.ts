@@ -16,9 +16,11 @@ import { AuthentificationService } from '../core/authentification/authentificati
 import { StudentNavComponent } from './component/student-nav/student-nav.component';
 import { StudentCategoriesComponent } from './component/student-categories';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StudentTableComponent } from './component/student-table/student-table.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [StudentAccountComponent,StudentExerciseComponent, StudentNavComponent, StudentCategoriesComponent],
+  declarations: [StudentAccountComponent,StudentExerciseComponent, StudentNavComponent, StudentCategoriesComponent, StudentTableComponent],
   imports: [
     MatInputModule,
     CommonModule,
@@ -32,7 +34,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatMenuModule,
     MatSidenavModule, 
     MatCheckboxModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    StudentTableComponent
   ]
 })
 export class StudentModule { }
