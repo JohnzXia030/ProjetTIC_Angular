@@ -49,7 +49,12 @@
   </table>
 </div>
 
+<div class="flex-container example-form">
+  <button (click)="lastExercise()" class="btn btn-info">Exercice précédent</button>
+  <span class="align-right">
+    <button (click)="nextExercise()" class="btn btn-info">Exercice suivant</button>
+  </span>
+</div>
 <div class="example-form">
-  <button (click)="lastExercise()" class="btn btn-success">Exercice précédent</button>
-  <button (click)="nextExercise()" class="btn btn-success">Exercice suivant</button>
+  <button class="btn btn-danger "><a [routerLink]="['../../categories']">Retour aux catégories</a></button>
 </div>

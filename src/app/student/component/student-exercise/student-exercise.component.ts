@@ -7,6 +7,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Exercise, jsonExo } from 'src/app/shared/entities/exercise';
 import { ExerciseService } from 'src/app/core/services/exercise.service';
+import { CorrectionService } from 'src/app/core/services/correction.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class StudentExerciseComponent implements OnInit {
   
   exercises: Exercise[];
   exercise: Exercise;
-  model: SqlQuery = new SqlQuery("");
+  model: SqlQuery = new SqlQuery(1,"");
   resp: jsonExo;
 
   displayedColumns: string[];
@@ -34,7 +35,7 @@ export class StudentExerciseComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private exerciseService: ExerciseService,
-    private http: HttpClient
+    private correctionService: CorrectionService
   ) {}
 
   ngOnInit() {
@@ -51,27 +52,35 @@ export class StudentExerciseComponent implements OnInit {
 
   onSubmit() {
     this.dataResults = null;
-    this.http.post("/api/sqlExecutor/testSql", JSON.stringify(this.model), {responseType: 'text'}).subscribe(results => {
+    this.model.idExercise = this.exercise.idExercise;
+    this.correctionService.testExercise(this.model).subscribe(results => {
         this.dataResults = JSON.parse(results),
-        console.log(this.dataResults)
-          this.setDataSourceAndDisplayedColumns()
-          this.correct = true;
-          //this.trueOrFalse()
+        this.setDataSourceAndDisplayedColumns()
       }
     );
+    this.correctionService.correctExercise(this.model).subscribe( result =>
+      this.trueOrFalse(JSON.parse(result))
+    )
   }
 
   nextExercise(){
-    this.posExercise++
-    this.exercise = this.exercises[this.posExercise];
+    if (this.posExercise<this.exercises.length-1)
+      this.posExercise++
+      this.changeExercise()
   }
 
   lastExercise(){
     if (this.posExercise>0){
       this.posExercise--
-      this.exercise = this.exercises[this.posExercise];
+      this.changeExercise()
     }
+  }
 
+  changeExercise(){
+      this.exercise = this.exercises[this.posExercise];
+      this.dataResults = null;
+      this.correct = null;
+      this.model.sqlQuery="";
   }
 
   getKeysFromJsonArray() {
@@ -102,12 +111,11 @@ export class StudentExerciseComponent implements OnInit {
     }
   }
 
-  trueOrFalse() {
-    /*if (this.exerciseDB.exerciseCorrection.indexOf(this.model.sqlQuery) >= 0) {
-      this.correct = true;
-    } else {
-      this.correct = false;
-    }*/
+  trueOrFalse(model) {
+    if(model.VeriCode==1001 || model.VeriCode==1002){
+      this.correct = true
+    } else
+      this.correct = false
   }
 
   getErrorCode() {
@@ -127,9 +135,4 @@ export class StudentExerciseComponent implements OnInit {
       return this.dataResults.hasOwnProperty("ErrorCode");
     }
   }  
-
-  events: string[] = [];
-  opened: boolean;
-
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 }
