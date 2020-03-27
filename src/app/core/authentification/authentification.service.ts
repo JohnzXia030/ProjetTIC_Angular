@@ -18,10 +18,16 @@ export class AuthentificationService implements CanActivate {
         this.resp = JSON.parse(results);
         if (this.resp.Data.userClass == 1) {
           this.isAdmin = true;
-          console.log(this.isAdmin);
-        } else
+          
+        } 
+        else if (this.resp.Data.userClass == 2){
+          this.isAdmin = false;
+          this.router.navigateByUrl('student/account');
+        }
+        else if(this.resp.StatusCode = 400){
           this.isAdmin = false;
           this.router.navigateByUrl('home/connexion');
+        }
       }
     );
     

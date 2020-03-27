@@ -28,6 +28,7 @@ export class HomeFormComponent implements OnInit {
         this.responseUser = JSON.parse(results);
         if(this.responseUser.StatusCode==400){
           console.log("not log in yet");
+          return;
         }
         else {
           if (this.responseUser.Data.userClass==2){
