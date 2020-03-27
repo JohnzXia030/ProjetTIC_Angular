@@ -18,7 +18,6 @@ export class AuthentificationService implements CanActivate {
         this.resp = JSON.parse(results);
         if (this.resp.Data.userClass == 1) {
           this.isAdmin = true;
-          
           console.log(this.isAdmin);
         } else
           this.isAdmin = false;

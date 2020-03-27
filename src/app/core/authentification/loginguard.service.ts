@@ -8,7 +8,6 @@ export class LoginguardService implements CanActivate {
   
   constructor(private router: Router) {
   }
-
   canActivate(): boolean {
     let isLogin: boolean;
     const user = sessionStorage.getItem("userName");

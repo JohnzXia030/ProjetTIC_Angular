@@ -25,11 +25,11 @@ export class HomeFormComponent implements OnInit {
     this.auth.getLoginStatus()
     .subscribe(
       results => {
-        console.log("123456");
         this.responseUser = JSON.parse(results);
-        if(this.responseUser.LoginStatus=="false"){
-          console.log("123456");
-        }else {
+        if(this.responseUser.StatusCode==400){
+          console.log("not log in yet");
+        }
+        else {
           if (this.responseUser.Data.userClass==2){
           this.router.navigateByUrl("student/account");
           } else 
