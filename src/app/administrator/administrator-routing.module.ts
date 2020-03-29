@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminExoComponent } from './component';
 import { AdminHomeComponent } from './component';
 import { AdminCategoryComponent } from './component';
+import { AdminUsersComponent } from './component';
 
 
 const routes: Routes = [
@@ -19,6 +20,9 @@ const routes: Routes = [
       },{
         path: 'category',
         component:AdminCategoryComponent
+      },{
+        path: 'users',
+        component:AdminUsersComponent       
       }
       
     ]

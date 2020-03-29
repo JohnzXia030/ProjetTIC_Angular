@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Exercise } from '../../../shared/entities/exercise'
 import { Category } from '../../../shared/entities/category'
-import {HttpClient} from "@angular/common/http";
 import { Observable, of } from 'rxjs';
 import { CategoryService } from '../../../core/services/category.service'
 import { ExerciseService } from '../../../core/services/exercise.service'

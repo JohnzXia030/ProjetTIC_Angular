@@ -19,11 +19,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateCategoryComponent } from './component/update-category/update-category.component';
 import { AuthentificationService } from '../core/authentification/authentification.service';
 import { UpdateExerciseComponent } from './component/update-exercise/update-exercise.component';
+import { AdminUsersComponent } from './component/admin-users/admin-users.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 
 
 @NgModule({
-  declarations: [AdminExoComponent, AdminHomeComponent, AdminCategoryComponent, AdminNavComponent, UpdateCategoryComponent, UpdateExerciseComponent],
+  declarations: [AdminExoComponent, AdminHomeComponent, AdminCategoryComponent, AdminNavComponent, UpdateCategoryComponent, UpdateExerciseComponent, AdminUsersComponent],
   imports: [
     CommonModule,
     AdministratorRoutingModule,
@@ -36,7 +40,10 @@ import { UpdateExerciseComponent } from './component/update-exercise/update-exer
     MatSidenavModule,
     NgbModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule
   ],
   entryComponents: [
     UpdateCategoryComponent,

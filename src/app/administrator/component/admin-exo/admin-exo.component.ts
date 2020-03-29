@@ -65,8 +65,8 @@ export class AdminExoComponent implements OnInit {
 	getExercises(){
 		this.exerciseService.getAllExercises().subscribe(results =>
 			{
-				console.log(results);
 				this.exercises = results
+				console.log(results)
 			}
 		)
 	}

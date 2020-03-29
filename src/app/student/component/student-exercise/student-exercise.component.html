@@ -2,7 +2,7 @@
 <div>a</div>
 
 <div *ngIf="exercise" class="marg-top">
-  <mat-card >Enoncé : {{exercise.textExercise}}</mat-card>
+  <mat-card>Enoncé : {{exercise.textExercise}}</mat-card>
 </div>
 <div class="example-form">
   <button class="btn btn-info" (click)="displayTables()">Montrer les tables</button>
@@ -22,7 +22,19 @@
       </button>
 
     </mat-form-field>
-    <button class="btn btn-success" mat-button type="submit">Submit</button>
+    
+    <div class="flex-container">
+      <button class="btn btn-success" mat-button type="submit">Submit</button>
+      <span class="align-right" *ngIf="tries>=3">
+        <button (click)="showCorrection()" class="btn btn-danger">Montrer les corrections</button>
+      </span>
+    </div>
+
+    <mat-card *ngIf="showCorrections">
+      <div *ngFor="let correction of corrections">
+        {{correction.textCorrection}}
+      </div>
+    </mat-card>
 
   </form>
 

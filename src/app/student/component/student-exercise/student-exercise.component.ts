@@ -9,6 +9,8 @@ import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MatDialog} from '@angula
 
 
 import { Exercise, jsonExo } from 'src/app/shared/entities/exercise';
+import {Correction} from 'src/app/shared/entities/correction';
+
 import { ExerciseService } from 'src/app/core/services/exercise.service';
 import { CorrectionService } from 'src/app/core/services/correction.service';
 import { StudentTableComponent } from '../student-table/student-table.component'
@@ -34,6 +36,10 @@ export class StudentExerciseComponent implements OnInit {
   posExercise:number=0;
 
   correct:boolean;
+
+  tries:number=0;
+  corrections:Correction[]=[]
+  showCorrections = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -86,6 +92,10 @@ export class StudentExerciseComponent implements OnInit {
       this.dataResults = null;
       this.correct = null;
       this.model.sqlQuery="";
+
+      this.tries = 0;
+      this.showCorrections = false;
+      this.corrections = []
   }
 
   getKeysFromJsonArray() {
@@ -119,8 +129,17 @@ export class StudentExerciseComponent implements OnInit {
   trueOrFalse(model) {
     if(model.VeriCode==1001 || model.VeriCode==1002){
       this.correct = true
-    } else
+    } else {
       this.correct = false
+      this.tries+=1;
+    }
+  }
+
+  showCorrection(){
+    this.showCorrections = true
+    this.correctionService.getCorrectionByExercise(this.exercise.idExercise).subscribe(result =>
+      this.corrections = result
+    )
   }
 
   getErrorCode() {
