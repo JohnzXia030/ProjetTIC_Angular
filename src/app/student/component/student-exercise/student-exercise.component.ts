@@ -10,9 +10,12 @@ import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MatDialog} from '@angula
 
 import { Exercise, jsonExo } from 'src/app/shared/entities/exercise';
 import {Correction} from 'src/app/shared/entities/correction';
+import {Advancement} from 'src/app/shared/entities/advancement';
 
 import { ExerciseService } from 'src/app/core/services/exercise.service';
 import { CorrectionService } from 'src/app/core/services/correction.service';
+import { AdvancementService } from 'src/app/core/services/advancement.service';
+
 import { StudentTableComponent } from '../student-table/student-table.component'
 
 
@@ -46,6 +49,7 @@ export class StudentExerciseComponent implements OnInit {
     private router: Router,
     private exerciseService: ExerciseService,
     private correctionService: CorrectionService,
+    private advancementService: AdvancementService,
     private dialog: MatDialog
   ) {}
 
@@ -53,8 +57,9 @@ export class StudentExerciseComponent implements OnInit {
     this.route.paramMap.subscribe(param =>
       this.idCategory=+param.get('id')
     )
-
-    this.exerciseService.getExercisesByGroup(this.idCategory).subscribe(result =>{
+    console.log(sessionStorage.getItem("userId")+"lol")
+    console.log('reach')
+    this.exerciseService.getExercisesToDoByGroup(this.idCategory, +sessionStorage.getItem("userId")).subscribe(result =>{
       this.exercises = result
       this.exercise = this.exercises[this.posExercise]
       }
@@ -129,10 +134,16 @@ export class StudentExerciseComponent implements OnInit {
   trueOrFalse(model) {
     if(model.VeriCode==1001 || model.VeriCode==1002){
       this.correct = true
+      this.updateAdvancement()
     } else {
       this.correct = false
       this.tries+=1;
     }
+  }
+
+  updateAdvancement(){
+    let advancement:Advancement=new Advancement(sessionStorage.userId, this.idCategory, this.exercise.idExercise)
+    this.advancementService.addAdvancement(advancement).subscribe()
   }
 
   showCorrection(){

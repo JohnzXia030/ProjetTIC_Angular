@@ -34,6 +34,11 @@
       <mat-cell *matCellDef="let row"> {{row.class}} <button (click)="changeClass(row.id)"> Change class</button> </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="advancementPercentage" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Avancement </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.advancementPercentage}}% </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;">
     </mat-row>

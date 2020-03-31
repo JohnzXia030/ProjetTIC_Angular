@@ -4,3 +4,7 @@ export class Category {
 	public orderCategory: number;
 }
 
+export class CategoryAdvancement extends Category {
+	public nbTotal: number;
+	public nbDone: number;
+}

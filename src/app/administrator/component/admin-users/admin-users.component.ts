@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { UserService } from '../../../core/services/user.service'
+import { AdvancementService } from '../../../core/services/advancement.service'
 import { Account } from '../../../shared/entities/account'
+import { AccountAdvancement } from '../../../shared/entities/accountAdvancement'
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatTable} from '@angular/material';
@@ -17,7 +19,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 export class AdminUsersComponent{
 
-  displayedColumns = ['id', 'name', 'class'];
+  displayedColumns = ['id', 'name', 'class', 'advancementPercentage'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatTable, {static: false}) table: MatTable<UserData>;
@@ -26,26 +28,39 @@ export class AdminUsersComponent{
 
   accounts:Account[]
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private advancementService: AdvancementService) {
     this.generateTable()
   }
 
   generateTable(){
-    const users: UserData[] = [];
+    let users: UserData[] = [];
 
     this.userService.getAllUsers().subscribe(result => {
       this.accounts = result
-      for (let i = 0; i<this.accounts.length; i++){
-        let user:UserData = new UserData()
-        user.class = this.accounts[i].userClass
-        user.id = this.accounts[i].userId
-        user.name = this.accounts[i].userName
-        users.push(user)
-      }
-      this.dataSource = new MatTableDataSource(users); 
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      users = this.accounts.map(x => new UserData(x.userId, x.userName, x.userClass, 0))
+      this.addAdvancement(users)
     })    
+  }
+
+  addAdvancement(users: UserData[]){
+    this.advancementService.getTotalAdvancement().subscribe(result =>
+      {
+        let id
+        for(let i=0;i<result.length; i++ ){
+          id = result[i].userId
+          for (let j=0;j<users.length;j++){
+            if(id==users[j].id){
+              users[j].advancementPercentage=result[i].advancementPercentage
+            }
+          }
+        }
+        this.dataSource = new MatTableDataSource(users); 
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;    
+        console.log(users)    
+      }
+    )
   }
 
   applyFilter(filterValue: string) {
@@ -64,7 +79,14 @@ export class AdminUsersComponent{
 
 
 export class UserData {
+  constructor(theId:number, theName: string, theClass: number,theAdvancementPercentage: number){
+    this.id = theId
+    this.name = theName
+    this.class = theClass
+    this.advancementPercentage = theAdvancementPercentage
+  }
   id: number;
   name: string;
   class: number;
+  advancementPercentage: number;
 }
