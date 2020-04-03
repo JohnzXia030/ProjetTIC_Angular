@@ -16,6 +16,7 @@ import { AuthentificationService } from '../core/authentification/authentificati
 import { StudentNavComponent } from './component/student-nav/student-nav.component';
 import { StudentCategoriesComponent } from './component/student-categories';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [StudentAccountComponent,StudentExerciseComponent, StudentNavComponent, StudentCategoriesComponent],
@@ -32,7 +33,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatMenuModule,
     MatSidenavModule, 
     MatCheckboxModule,
-    NgbModule
+    NgbModule,
+    SharedModule
   ]
 })
 export class StudentModule { }

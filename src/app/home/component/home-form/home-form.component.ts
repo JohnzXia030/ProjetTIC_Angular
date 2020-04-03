@@ -31,7 +31,7 @@ export class HomeFormComponent implements OnInit {
           return;
         }
         else {
-          if (this.responseUser.Data.userClass==2){
+          if (this.responseUser.UserClass[0].authority == "2"){
           this.router.navigateByUrl("student/account");
           } else 
           this.router.navigateByUrl("administrator");
@@ -44,7 +44,7 @@ export class HomeFormComponent implements OnInit {
   onSubmit(data){
     //data and model represent both the information submitted
     this._http
-    .post("api/user/getLogInfo", 
+    .post("api/user/login", 
           JSON.stringify(this.model),{responseType: 'text'})
     .subscribe(
           results => {
@@ -73,8 +73,9 @@ export class HomeFormComponent implements OnInit {
               console.log(this.model.getAllParam());
               if (this.responseUser.Data.userClass==2){
               this.router.navigateByUrl("student/account");
-              } else 
+              } else {
               this.router.navigateByUrl("administrator");
+              }
             }
           }
     );

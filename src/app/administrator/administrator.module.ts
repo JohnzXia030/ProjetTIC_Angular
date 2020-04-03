@@ -19,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { UpdateCategoryComponent } from './component/update-category/update-category.component';
 import { AuthentificationService } from '../core/authentification/authentification.service';
 import { UpdateExerciseComponent } from './component/update-exercise/update-exercise.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -36,7 +37,8 @@ import { UpdateExerciseComponent } from './component/update-exercise/update-exer
     MatSidenavModule,
     NgbModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    SharedModule
   ],
   entryComponents: [
     UpdateCategoryComponent,

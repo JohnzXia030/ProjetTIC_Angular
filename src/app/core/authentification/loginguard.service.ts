@@ -13,7 +13,6 @@ export class LoginguardService implements CanActivate {
     const user = sessionStorage.getItem("userName");
     if (!user) {
       isLogin = false; 
-      console.log(123456);
       this.router.navigateByUrl('home/connexion');
     } else {
       isLogin = true;
