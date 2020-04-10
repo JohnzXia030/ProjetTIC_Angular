@@ -2,9 +2,11 @@
 <div>a</div>
 
 <div *ngIf="exercise" class="marg-top">
-  <mat-card >Enoncé : {{exercise.textExercise}}</mat-card>
+  <mat-card>Enoncé : {{exercise.textExercise}}</mat-card>
 </div>
-
+<div class="example-form">
+  <button class="btn btn-info" (click)="displayTables()">Montrer les tables</button>
+</div>
 
 <div class="example-form">
   <form (ngSubmit)="onSubmit()">
@@ -20,7 +22,19 @@
       </button>
 
     </mat-form-field>
-    <button class="btn btn-success" mat-button type="submit">Submit</button>
+    
+    <div class="flex-container">
+      <button class="btn btn-success" mat-button type="submit" [disabled]="cannotSubmit">Submit</button>
+      <span class="align-right" *ngIf="tries>=3">
+        <button (click)="showCorrection()" class="btn btn-danger">Montrer les corrections</button>
+      </span>
+    </div>
+
+    <mat-card *ngIf="showCorrections">
+      <div *ngFor="let correction of corrections">
+        {{correction.textCorrection}}
+      </div>
+    </mat-card>
 
   </form>
 
@@ -49,7 +63,12 @@
   </table>
 </div>
 
+<div class="flex-container example-form">
+  <button (click)="lastExercise()" class="btn btn-info" [disabled]="noPrevious">Exercice précédent</button>
+  <span class="align-right">
+    <button (click)="nextExercise()" class="btn btn-info" [disabled]="noNext">Exercice suivant</button>
+  </span>
+</div>
 <div class="example-form">
-  <button (click)="lastExercise()" class="btn btn-success">Exercice précédent</button>
-  <button (click)="nextExercise()" class="btn btn-success">Exercice suivant</button>
+  <button class="btn btn-danger "><a [routerLink]="['../../categories']">Retour aux catégories</a></button>
 </div>

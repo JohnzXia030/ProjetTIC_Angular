@@ -16,5 +16,8 @@
         <p *ngIf="error" class=error><strong>{{error}}</strong></p>
     </form>
     <!-- <p>{{connectionForm.value|json}}</p> -->
-
+    <div *ngIf="accountAdvancement">
+        Nombre d'exercises faits : {{accountAdvancement.nbExercisesDone}}
+        Pourcentage réalisé : {{accountAdvancement.advancementPercentage}}
+    </div>
 </div>

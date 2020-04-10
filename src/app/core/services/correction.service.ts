@@ -21,4 +21,12 @@ export class CorrectionService {
 	deleteCorrection(id: number){
 		return this.http.delete(`api/correction/updateCorrection/${id}`)
 	}
+
+	testExercise(model){
+		return this.http.post("/api/sqlExecutor/testSql", JSON.stringify(model), {responseType: 'text'})
+	}
+
+	correctExercise(model){
+		return this.http.post("/api/sqlExecutor/sqlCorrector", JSON.stringify(model), {responseType: 'text'})
+	}
 }

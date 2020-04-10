@@ -17,9 +17,11 @@ import { StudentNavComponent } from './component/student-nav/student-nav.compone
 import { StudentCategoriesComponent } from './component/student-categories';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../shared/shared.module';
+import { StudentTableComponent } from './component/student-table/student-table.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [StudentAccountComponent,StudentExerciseComponent, StudentNavComponent, StudentCategoriesComponent],
+  declarations: [StudentAccountComponent,StudentExerciseComponent, StudentNavComponent, StudentCategoriesComponent, StudentTableComponent],
   imports: [
     MatInputModule,
     CommonModule,
@@ -34,7 +36,11 @@ import { SharedModule } from '../shared/shared.module';
     MatSidenavModule, 
     MatCheckboxModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    StudentTableComponent
   ]
 })
 export class StudentModule { }

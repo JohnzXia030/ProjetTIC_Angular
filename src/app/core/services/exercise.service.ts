@@ -31,6 +31,10 @@ export class ExerciseService {
   	return this.http.post<Exercise[]>("api/exercise/getExercisesByGroup", JSON.stringify(category))
   }
 
+  getExercisesToDoByGroup(idCategory:number, idUser:number){
+    return this.http.get<Exercise[]>(`api/exercise/getExercisesToDoByGroup/${idCategory}/${idUser}`)
+  }
+
   updateExercise(exercise: Exercise){
     console.log(JSON.stringify(exercise))
     return this.http.post("api/exercise/updateExercise", JSON.stringify(exercise))

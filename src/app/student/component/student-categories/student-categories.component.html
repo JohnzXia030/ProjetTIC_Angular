@@ -7,10 +7,10 @@
 			</mat-card-title>
 		</mat-card-header>
 		<mat-card-content>
+			Nombre d'exercices total : {{category.nbTotal}}<br>
+			Nombre d'exercices réussis : {{category.nbDone}}
+			<button class="btn btn-success" [routerLink]="['../exercise', category.idCategory]" [disabled]="isFinished(category)">Choisir cette catégorie</button>
 		</mat-card-content>
-		<mat-card-actions>
-			<button class="btn btn-success"><a [routerLink]="['../exercise', category.idCategory]">Choisir cette catégorie</a></button>
-		</mat-card-actions>
 	</mat-card>
 
 </div>
