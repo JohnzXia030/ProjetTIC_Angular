@@ -26,4 +26,8 @@ export class AdvancementService {
   getCategoryAdvancement(idUser:number){
     return this.http.get<CategoryAdvancement[]>(`api/advancement/getCategoryAdvancement/${idUser}`)
   }
+
+  getTotalAdvancementByUser(idUser: number){
+    return this.http.get<AccountAdvancement>(`api/advancement/getAdvancementByUser/${idUser}`)
+  }
 }

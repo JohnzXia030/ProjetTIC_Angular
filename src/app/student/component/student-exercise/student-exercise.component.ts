@@ -39,10 +39,14 @@ export class StudentExerciseComponent implements OnInit {
   posExercise:number=0;
 
   correct:boolean;
+  cannotSubmit:boolean = false;
 
   tries:number=0;
   corrections:Correction[]=[]
   showCorrections = false;
+
+  noPrevious=true;
+  noNext=false;
 
   constructor(
     private route: ActivatedRoute,
@@ -80,9 +84,12 @@ export class StudentExerciseComponent implements OnInit {
   }
 
   nextExercise(){
-    if (this.posExercise<this.exercises.length-1)
+    if (this.posExercise<this.exercises.length-1){
       this.posExercise++
       this.changeExercise()
+    }
+
+    this.disableNextAndPrevious()
   }
 
   lastExercise(){
@@ -90,6 +97,21 @@ export class StudentExerciseComponent implements OnInit {
       this.posExercise--
       this.changeExercise()
     }
+
+  this.disableNextAndPrevious()
+  }
+
+  disableNextAndPrevious(){
+    if (this.posExercise==this.exercises.length-1){
+      this.noNext=true
+    } else {
+      this.noNext=false
+    }
+    if (this.posExercise==0){
+      this.noPrevious=true
+    } else {
+      this.noPrevious=false
+    }    
   }
 
   changeExercise(){
@@ -101,6 +123,9 @@ export class StudentExerciseComponent implements OnInit {
       this.tries = 0;
       this.showCorrections = false;
       this.corrections = []
+      this.cannotSubmit=false
+
+
   }
 
   getKeysFromJsonArray() {
@@ -135,6 +160,7 @@ export class StudentExerciseComponent implements OnInit {
     if(model.VeriCode==1001 || model.VeriCode==1002){
       this.correct = true
       this.updateAdvancement()
+      this.cannotSubmit=true;
     } else {
       this.correct = false
       this.tries+=1;
@@ -174,4 +200,5 @@ export class StudentExerciseComponent implements OnInit {
   displayTables(){
     const dialogRef = this.dialog.open(StudentTableComponent);
   }
+
 }

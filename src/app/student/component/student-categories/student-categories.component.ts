@@ -23,7 +23,7 @@ export class StudentCategoriesComponent implements OnInit {
 
   ngOnInit() {
   	this.advancementService.getCategoryAdvancement(+sessionStorage.getItem("userId")).subscribe(results =>
-  		this.categories = results
+  		this.categories = results.sort(function(a,b){return a.orderCategory-b.orderCategory})
   	)
   }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { userInfo } from 'src/app/shared/entities/userInfo';
+import { AccountAdvancement } from 'src/app/shared/entities/accountAdvancement';
 import { AuthentificationService } from 'src/app/core/authentification/authentification.service';
+import { AdvancementService } from '../../../core/services/advancement.service'
 
 @Component({
   selector: 'app-student-account',
@@ -11,7 +13,12 @@ export class StudentAccountComponent implements OnInit {
   public user: userInfo;
   public uinfo: any;
   public resp;
-  constructor(private auth: AuthentificationService) { }
+  accountAdvancement: AccountAdvancement;
+
+
+
+  constructor(private auth: AuthentificationService,
+    private advancementService: AdvancementService) { }
 
   ngOnInit() {
     this.auth.getLoginStatus()
@@ -35,6 +42,10 @@ export class StudentAccountComponent implements OnInit {
     // }
     // console.log(this.user.getAllParam());
     // console.log("1" + this.user.userName);
+
+    this.advancementService.getTotalAdvancementByUser(sessionStorage.userId).subscribe(result=>
+      this.accountAdvancement = result
+    )
   }
 
 }
