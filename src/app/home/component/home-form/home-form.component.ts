@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { userInfo } from 'src/app/shared/entities/userInfo';
 import { AuthentificationService } from 'src/app/core/authentification/authentification.service';
 import { LogOutComponent } from 'src/app/shared/components/log-out/log-out.component';
-
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-home-form',
@@ -49,17 +49,14 @@ export class HomeFormComponent implements OnInit {
   
   onSubmit(data){
     //data and model represent both the information submitted
+    const hash = bcrypt.hash(this.model.userPassword,10);
+    console.log(hash);
+    this.model.userPassword = hash;
     this._http
     .post("api/user/login", 
           JSON.stringify(this.model),{responseType: 'text'})
     .subscribe(
           results => {
-            // for (const key in this.model) {
-            //   if (this.model.hasOwnProperty(key)) {
-            //     const element = this.model[key];
-            //     console.log(key+":"+element);
-            //   }
-            // }
             console.log(this.model.userName);
             this.responseUser= JSON.parse(results);
             if (this.responseUser.StatusCode==401){
