@@ -10,7 +10,6 @@ export class AuthentificationService implements CanActivate {
   public resp;
   @Output() loginStatus: boolean = false;
   constructor(private http: HttpClient, private router: Router) { }
-
   canActivate(): boolean {
     this.http.get("api/user/getSessionInfo", { responseType: 'text' }).subscribe(
       results => {

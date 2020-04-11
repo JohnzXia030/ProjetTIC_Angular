@@ -28,11 +28,10 @@
         <p>Password:<span style="color:red"> *</span></p>
         <input [(ngModel)]="model.userPassword" class="form-control" id="password" name="password" type="password" required="required" size="15">
         <br/>
-
-        <select class="form-control" id="power" required [(ngModel)]="model.userClass" name="groupid">
+        <!-- <select class="form-control" id="power" required [(ngModel)]="model.userClass" name="groupid">
             <option [value]="1">Login as Administrator</option>
             <option [value]="2">Login as User</option>
-        </select><br/>
+        </select><br/> -->
         <input type="submit" value="Submit" [disabled]="!connectionForm.form.valid">
 
         <p *ngIf="error" class=error><strong>{{error}}</strong></p>

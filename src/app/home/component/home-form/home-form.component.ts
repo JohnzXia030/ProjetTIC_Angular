@@ -1,10 +1,11 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { FormArray,ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router';
 import { userInfo } from 'src/app/shared/entities/userInfo';
 import { AuthentificationService } from 'src/app/core/authentification/authentification.service';
+import { LogOutComponent } from 'src/app/shared/components/log-out/log-out.component';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class HomeFormComponent implements OnInit {
   public responseUser;
   @Output() user:any;
   public error;
-  
+  @Input() message;
   
   constructor(private _http: HttpClient,private router: Router,private auth: AuthentificationService) {}
 
@@ -26,19 +27,24 @@ export class HomeFormComponent implements OnInit {
     .subscribe(
       results => {
         this.responseUser = JSON.parse(results);
-        if(this.responseUser.StatusCode==400){
-          console.log("not log in yet");
+        if(this.responseUser.UserClass[0].authority=='ROLE_ANONYMOUS'){
+          //this.error = "not log in yet";
+          
           return;
         }
         else {
           if (this.responseUser.UserClass[0].authority == "2"){
           this.router.navigateByUrl("student/account");
-          } else 
+          } else if(this.responseUser.UserClass[0].authority == "1"){
           this.router.navigateByUrl("administrator");
+          }
         }
       }
     );
     this.model = new userInfo("","","",2);
+    if (sessionStorage.getItem("")){
+      //
+    }
   }
   
   onSubmit(data){
