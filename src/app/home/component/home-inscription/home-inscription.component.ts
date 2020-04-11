@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import * as bcrypt from 'bcryptjs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { userInfo } from 'src/app/shared/entities/userInfo';
@@ -26,7 +26,9 @@ export class HomeInscriptionComponent implements OnInit {
     if (data.password!=this.pw2){
       this.error = "Please re-confirm the password";
       return;
-    }
+    };
+    const hash = bcrypt.hashSync(this.model.userPassword,10);
+    this.model.userPassword = hash;
     this._http
     .post("api/user/registerInfo", 
           JSON.stringify(this.model),{responseType: 'text'})

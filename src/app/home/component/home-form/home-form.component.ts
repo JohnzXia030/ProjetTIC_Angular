@@ -49,9 +49,9 @@ export class HomeFormComponent implements OnInit {
   
   onSubmit(data){
     //data and model represent both the information submitted
-    const hash = bcrypt.hash(this.model.userPassword,10);
-    console.log(hash);
+    const hash = bcrypt.hashSync(this.model.userPassword,10);
     this.model.userPassword = hash;
+    //console.log(this.model.userPassword);
     this._http
     .post("api/user/login", 
           JSON.stringify(this.model),{responseType: 'text'})
