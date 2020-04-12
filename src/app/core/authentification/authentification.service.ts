@@ -17,7 +17,7 @@ export class AuthentificationService implements CanActivate {
         console.log(results);
         if (this.resp.UserClass[0].authority == "1") {
           this.isAdmin = true;
-          
+          this.router.navigateByUrl('administrator');
         }
         else if (this.resp.UserClass[0].authority == "2") {
           this.isAdmin = false;

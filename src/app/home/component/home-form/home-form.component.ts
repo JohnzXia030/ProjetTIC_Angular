@@ -42,17 +42,16 @@ export class HomeFormComponent implements OnInit {
       }
     );
     this.model = new userInfo("","","",2);
-    if (sessionStorage.getItem("")){
-      //
-    }
+    
   }
   
   onSubmit(data){
     //data and model represent both the information submitted
+    //PW encryption
     const initPw = this.model.userPassword;
     const hash = sha256(initPw);
     this.model.userPassword = hash;
-    //console.log(hash);
+    
     this._http
     .post("api/user/login", 
           JSON.stringify(this.model),{responseType: 'text'})
@@ -71,14 +70,15 @@ export class HomeFormComponent implements OnInit {
               for (const key in this.responseUser.Data) {
                 if (this.responseUser.Data.hasOwnProperty(key)) {
                   const element = this.responseUser.Data[key];
-                  sessionStorage.setItem(key,element);
+                  localStorage.setItem(key,element);
                 }
               }
-              console.log(sessionStorage.getItem("userName"));
+              console.log(localStorage.getItem("userName"));
               console.log(this.model.getAllParam());
+              this.model.userPassword = initPw;
               if (this.responseUser.Data.userClass==2){
               this.router.navigateByUrl("student/account");
-              } else {
+              } else if (this.responseUser.Data.userClass==1){
               this.router.navigateByUrl("administrator");
               }
             }

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LogOutComponent implements OnInit {
   @Output() message:String;
-  responseUser;
+  public responseUser;
   constructor(private logOutService:LogoutService,private router:Router) { }
 
   ngOnInit() {
@@ -25,11 +25,7 @@ export class LogOutComponent implements OnInit {
         alert(this.message);
       }
     );
-    
-    sessionStorage.clear();
-    
+    localStorage.clear();
     this.router.navigateByUrl("home/connexion");
-    
-    
   }
 }

@@ -33,17 +33,17 @@ export class StudentAccountComponent implements OnInit {
     );
     
     
-    this.user = new userInfo(sessionStorage.userName, sessionStorage.userEmail, sessionStorage.userPassword, 2);
-    // console.log("12:" + sessionStorage.getItem("userName"));
-    // for (const key in sessionStorage) {
+    this.user = new userInfo(localStorage.userName, localStorage.userEmail, localStorage.userPassword, 2);
+    // console.log("12:" + localStorage.getItem("userName"));
+    // for (const key in localStorage) {
     //   console.log("key:" + key);
-    //   const element = sessionStorage.userName;
+    //   const element = localStorage.userName;
     //   console.log(key + ":" + element);
     // }
     // console.log(this.user.getAllParam());
     // console.log("1" + this.user.userName);
 
-    this.advancementService.getTotalAdvancementByUser(sessionStorage.userId).subscribe(result=>
+    this.advancementService.getTotalAdvancementByUser(localStorage.userId).subscribe(result=>
       this.accountAdvancement = result
     )
   }

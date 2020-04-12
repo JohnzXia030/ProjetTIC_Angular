@@ -61,9 +61,9 @@ export class StudentExerciseComponent implements OnInit {
     this.route.paramMap.subscribe(param =>
       this.idCategory=+param.get('id')
     )
-    console.log(sessionStorage.getItem("userId")+"lol")
+    console.log(localStorage.getItem("userId")+"lol")
     console.log('reach')
-    this.exerciseService.getExercisesToDoByGroup(this.idCategory, +sessionStorage.getItem("userId")).subscribe(result =>{
+    this.exerciseService.getExercisesToDoByGroup(this.idCategory, +localStorage.getItem("userId")).subscribe(result =>{
       this.exercises = result
       this.exercise = this.exercises[this.posExercise]
       }
@@ -168,7 +168,7 @@ export class StudentExerciseComponent implements OnInit {
   }
 
   updateAdvancement(){
-    let advancement:Advancement=new Advancement(sessionStorage.userId, this.idCategory, this.exercise.idExercise)
+    let advancement:Advancement=new Advancement(localStorage.userId, this.idCategory, this.exercise.idExercise)
     this.advancementService.addAdvancement(advancement).subscribe()
   }
 
