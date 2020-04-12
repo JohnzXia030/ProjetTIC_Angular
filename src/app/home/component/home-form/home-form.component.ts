@@ -7,6 +7,7 @@ import { userInfo } from 'src/app/shared/entities/userInfo';
 import { AuthentificationService } from 'src/app/core/authentification/authentification.service';
 import { LogOutComponent } from 'src/app/shared/components/log-out/log-out.component';
 import * as bcrypt from 'bcryptjs';
+import { sha256, sha224 } from 'js-sha256';
 
 @Component({
   selector: 'app-home-form',
@@ -29,7 +30,6 @@ export class HomeFormComponent implements OnInit {
         this.responseUser = JSON.parse(results);
         if(this.responseUser.UserClass[0].authority=='ROLE_ANONYMOUS'){
           //this.error = "not log in yet";
-          
           return;
         }
         else {
@@ -49,9 +49,9 @@ export class HomeFormComponent implements OnInit {
   
   onSubmit(data){
     //data and model represent both the information submitted
-    const hash = bcrypt.hashSync(this.model.userPassword,10);
+    const hash = sha256(this.model.userPassword);
     this.model.userPassword = hash;
-    //console.log(this.model.userPassword);
+    //console.log(hash);
     this._http
     .post("api/user/login", 
           JSON.stringify(this.model),{responseType: 'text'})
