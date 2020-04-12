@@ -3,6 +3,7 @@ import { sha256, sha224 } from 'js-sha256';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { userInfo } from 'src/app/shared/entities/userInfo';
+import { InfoVerificationService } from 'src/app/core/services/infoVerification.service';
 
 @Component({
   selector: 'app-home-inscription',
@@ -15,7 +16,7 @@ export class HomeInscriptionComponent implements OnInit {
   public respInscription;
   public test;
   public pw2;
-  constructor(private _http: HttpClient,private router: Router) { }
+  constructor(private _http: HttpClient,private router: Router,private infoVerifi: InfoVerificationService) { }
 
   ngOnInit() {
     this.model = new userInfo("","","",2);
@@ -27,6 +28,10 @@ export class HomeInscriptionComponent implements OnInit {
       this.error = "Please re-confirm the password";
       return;
     };
+    if (!this.infoVerifi.isEmail(this.model.userEmail)){
+      this.error = "Please re-confirm the form of email";
+      return;
+    }
     const initPw = this.model.userPassword;
     const hash = sha256(initPw);
     this.model.userPassword = hash;

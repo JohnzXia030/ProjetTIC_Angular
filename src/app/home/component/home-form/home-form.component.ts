@@ -47,7 +47,7 @@ export class HomeFormComponent implements OnInit {
   
   onSubmit(data){
     //data and model represent both the information submitted
-    //PW encryption
+    //Info encryption
     const initPw = this.model.userPassword;
     const hash = sha256(initPw);
     this.model.userPassword = hash;
