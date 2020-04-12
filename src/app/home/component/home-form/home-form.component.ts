@@ -49,7 +49,8 @@ export class HomeFormComponent implements OnInit {
   
   onSubmit(data){
     //data and model represent both the information submitted
-    const hash = sha256(this.model.userPassword);
+    const initPw = this.model.userPassword;
+    const hash = sha256(initPw);
     this.model.userPassword = hash;
     //console.log(hash);
     this._http
@@ -62,6 +63,7 @@ export class HomeFormComponent implements OnInit {
             if (this.responseUser.StatusCode==401){
               alert(this.responseUser.StatusMessage);
               this.error = this.responseUser.StatusMessage;
+              this.model.userPassword = initPw;
               this.router.navigateByUrl("home/connexion");
             } 
             else if(this.responseUser.StatusCode==200){

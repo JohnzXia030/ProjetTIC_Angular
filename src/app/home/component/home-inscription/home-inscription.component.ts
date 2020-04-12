@@ -27,7 +27,8 @@ export class HomeInscriptionComponent implements OnInit {
       this.error = "Please re-confirm the password";
       return;
     };
-    const hash = sha256(this.model.userPassword);
+    const initPw = this.model.userPassword;
+    const hash = sha256(initPw);
     this.model.userPassword = hash;
     this._http
     .post("api/user/registerInfo", 
@@ -37,6 +38,7 @@ export class HomeInscriptionComponent implements OnInit {
             this.respInscription= JSON.parse(results);
             if (this.respInscription.StatusCode==402){
               this.error = this.respInscription.StatusMessage;
+              this.model.userPassword = initPw;
               return;
             } 
             else if(this.respInscription.StatusCode==200){
